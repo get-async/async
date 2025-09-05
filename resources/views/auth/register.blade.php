@@ -6,7 +6,7 @@
         @if (config('organizationos.show_marketing_site'))
           <p class="group mb-10 flex items-center gap-x-1 text-sm text-gray-600">
             <x-phosphor-arrow-left class="h-4 w-4 transition-transform duration-150 group-hover:-translate-x-1" />
-            <x-link href="{{ route('marketing.index') }}" class="group-hover:underline">{{ __('Back to the marketing website') }}</x-link>
+            <x-link href="" class="group-hover:underline">{{ __('Back to the marketing website') }}</x-link>
           </p>
         @endif
 
@@ -16,7 +16,7 @@
         <!-- Title -->
         <div class="mb-8">
           <div class="flex items-center gap-x-2">
-            <a href="{{ route('marketing.index') }}" class="group flex items-center gap-x-2 transition-transform ease-in-out">
+            <a href="" class="group flex items-center gap-x-2 transition-transform ease-in-out">
               <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
                 <img src="{{ asset('images/marketing/auth/logo.webp') }}" alt="{{ config('app.name') }} logo" width="25" height="25" srcset="{{ asset('images/marketing/auth/logo.webp') }} 1x, {{ asset('images/marketing/auth/logo@2x.webp') }} 2x" />
               </div>

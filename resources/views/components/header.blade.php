@@ -2,7 +2,7 @@
   <!-- normal desktop header -->
   <nav class="hidden flex-1 items-center gap-3 pt-2 pb-2 sm:flex">
     <a href="/" class="flex items-center">
-      <img src="{{ asset('images/marketing/auth/logo.webp') }}" alt="{{ config('app.name') }} logo" width="20" height="20" srcset="{{ asset('images/marketing/auth/logo.webp') }} 1x, {{ asset('images/marketing/auth/logo@2x.webp') }} 2x" />
+      <x-logo width="20" height="20" />
     </a>
 
     <a class="rounded-md border border-transparent px-2 py-1 font-medium hover:border-gray-200 hover:bg-gray-100" href="/">{{ __('Dashboard') }}</a>
@@ -13,7 +13,7 @@
         {{ __('Search') }}
       </a>
 
-      <a href="{{ route('marketing.docs.index') }}" class="flex items-center gap-2 rounded-md border border-transparent px-2 py-1 font-medium hover:border-gray-200 hover:bg-gray-100">
+      <a href="" class="flex items-center gap-2 rounded-md border border-transparent px-2 py-1 font-medium hover:border-gray-200 hover:bg-gray-100">
         <x-phosphor-lifebuoy class="size-4 text-gray-600 transition-transform duration-150" />
         {{ __('Docs') }}
       </a>

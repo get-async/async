@@ -31,3 +31,4 @@ phpstan-baseline.neon
 /.github/prompts
 /.cursor
 CLAUDE.md
+.php-cs-fixer.cache

@@ -5,6 +5,11 @@
 ?>
 
 <x-box :title="__('Personal API Keys')" class="mb-6" padding="p-0">
+  <x-slot:description>
+    <p>{{ __('API keys are like secret passwords that allow other tools or apps to connect securely to your account.') }}</p>
+    <p>{{ __('Each API key is unique to you. Treat them like private passwords—don’t share them with anyone you don’t trust.') }}</p>
+  </x-slot>
+
   <div id="api-key-notification">
     @if (session('apiKey'))
       <div class="m-4 rounded-lg border border-green-300 bg-green-50 p-4">

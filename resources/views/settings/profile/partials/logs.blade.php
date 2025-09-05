@@ -5,6 +5,10 @@
 ?>
 
 <x-box :title="__('Logs')" padding="p-0">
+  <x-slot:description>
+    <p>{{ __('All actions performed on your account are logged here.') }}</p>
+  </x-slot>
+
   <!-- last actions -->
   @foreach ($viewModel->logs() as $log)
     <div class="flex items-center justify-between border-b border-gray-200 p-3 text-sm first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-blue-50">

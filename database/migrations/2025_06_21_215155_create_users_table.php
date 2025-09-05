@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('nickname')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('two_factor_confirmed_at')->nullable();
             $table->string('password');
             $table->string('locale')->default('en');
             $table->rememberToken();

@@ -8,7 +8,6 @@ use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\CheckOrganization;
 use App\Http\Middleware\CheckOrganizationAPI;
-use App\Http\Middleware\CheckMarketingPage;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -22,7 +21,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'set.locale' => SetLocale::class,
             'organization' => CheckOrganization::class,
             'organization.api' => CheckOrganizationAPI::class,
-            'marketing.page' => CheckMarketingPage::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

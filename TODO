@@ -29,10 +29,7 @@
 - [x] Add notion of marketing page
 - [x] Add pageviews for marketing page
 - [ ] Join organization
-- [ ] Remove dusk
-- [ ] Manage countries
-- [ ] Manage offices
-- [ ] Manage divisions
-- [ ] Manage departments
-- [ ] Manage teams
-- [ ] Manage guilds
+- [x] Remove dusk
+- [ ] 2fa
+- [ ] Automate release notes
+- [ ] Instance administration panel
