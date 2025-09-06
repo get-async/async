@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property int|null $organization_id
  * @property int|null $user_id
- * @property string $uuid
+ * @property string|null $uuid
  * @property string $email_type
  * @property string $email_address
  * @property string $subject

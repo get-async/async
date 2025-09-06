@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Actions\CreateApiKey;
 use App\Jobs\LogUserAction;
-use App\Jobs\SendAPICreatedEmail;
+use App\Jobs\SendEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\Queue;
 
@@ -34,9 +34,9 @@ it('creates an api key', function (): void {
 
     Queue::assertPushedOn(
         queue: 'high',
-        job: SendAPICreatedEmail::class,
-        callback: function (SendAPICreatedEmail $job) use ($user): bool {
-            return $job->email === $user->email && $job->label === 'Test API Key';
+        job: SendEmail::class,
+        callback: function (SendEmail $job) use ($user): bool {
+            return $job->user === $user && $job->parameters['label'] === 'Test API Key';
         },
     );
 });

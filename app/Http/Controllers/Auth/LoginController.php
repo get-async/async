@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\EmailType;
 use App\Http\Controllers\Controller;
-use App\Jobs\SendFailedLoginEmail;
+use App\Jobs\SendEmail;
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -34,8 +36,15 @@ final class LoginController extends Controller
         if (! Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey($request));
 
-            SendFailedLoginEmail::dispatch($request->input('email'))
-                ->onQueue('high');
+            $user = User::where('email', $request->input('email'))->first();
+
+            if ($user) {
+                SendEmail::dispatch(
+                    emailType: EmailType::LOGIN_FAILED,
+                    user: $user,
+                    parameters: [],
+                )->onQueue('high');
+            }
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),

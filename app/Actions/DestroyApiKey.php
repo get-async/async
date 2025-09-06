@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use App\Enums\EmailType;
 use App\Jobs\LogUserAction;
-use App\Jobs\SendAPIDestroyedEmail;
+use App\Jobs\SendEmail;
 use App\Models\User;
 
 final class DestroyApiKey
@@ -27,7 +28,7 @@ final class DestroyApiKey
         $token->delete();
 
         $this->log();
-        $this->sendEmail();
+        $this->sendEmailToUser();
     }
 
     private function log(): void
@@ -40,11 +41,14 @@ final class DestroyApiKey
         )->onQueue('low');
     }
 
-    private function sendEmail(): void
+    private function sendEmailToUser(): void
     {
-        SendAPIDestroyedEmail::dispatch(
-            email: $this->user->email,
-            label: $this->label,
+        SendEmail::dispatch(
+            emailType: EmailType::API_DESTROYED,
+            user: $this->user,
+            parameters: [
+                'label' => $this->label,
+            ],
         )->onQueue('high');
     }
 }

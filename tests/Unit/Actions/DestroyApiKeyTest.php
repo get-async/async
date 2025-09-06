@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use App\Jobs\LogUserAction;
-use App\Jobs\SendAPIDestroyedEmail;
 use App\Models\User;
 use App\Actions\DestroyApiKey;
+use App\Jobs\SendEmail;
 use Illuminate\Support\Facades\Queue;
 
 it('deletes an api key', function (): void {
@@ -35,9 +35,9 @@ it('deletes an api key', function (): void {
 
     Queue::assertPushedOn(
         queue: 'high',
-        job: SendAPIDestroyedEmail::class,
-        callback: function (SendAPIDestroyedEmail $job) use ($user): bool {
-            return $job->email === $user->email && $job->label === 'Test API Key';
+        job: SendEmail::class,
+        callback: function (SendEmail $job) use ($user): bool {
+            return $job->user === $user && $job->parameters['label'] === 'Test API Key';
         },
     );
 });

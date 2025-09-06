@@ -23,7 +23,7 @@ final class ApiKeyDestroyed extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Api key removed',
+            subject: 'API key removed',
         );
     }
 

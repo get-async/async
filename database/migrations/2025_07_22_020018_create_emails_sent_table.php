@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('organization_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('uuid');
+            $table->string('uuid')->nullable();
             $table->text('email_type');
             $table->text('email_address');
             $table->text('subject')->nullable();

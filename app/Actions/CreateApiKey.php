@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use App\Enums\EmailType;
 use App\Jobs\LogUserAction;
-use App\Jobs\SendAPICreatedEmail;
+use App\Jobs\SendEmail;
 use App\Models\User;
 
 final class CreateApiKey
@@ -36,9 +37,10 @@ final class CreateApiKey
 
     private function sendEmail(): void
     {
-        SendAPICreatedEmail::dispatch(
-            email: $this->user->email,
-            label: $this->label,
+        SendEmail::dispatch(
+            emailType: EmailType::API_CREATED,
+            user: $this->user,
+            parameters: ['label' => $this->label],
         )->onQueue('high');
     }
 }

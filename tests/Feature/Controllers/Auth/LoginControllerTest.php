@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Jobs\SendFailedLoginEmail;
+use App\Jobs\SendEmail;
 use App\Models\User;
+use App\Enums\EmailType;
 use Illuminate\Support\Facades\Queue;
 
 it('renders the login screen', function (): void {
@@ -45,8 +46,8 @@ it('sends an email on failed login', function (): void {
         'password' => 'wrong-password',
     ]);
 
-    Queue::assertPushed(SendFailedLoginEmail::class, function (SendFailedLoginEmail $job) use ($user): bool {
-        return $job->email === $user->email;
+    Queue::assertPushed(SendEmail::class, function (SendEmail $job) use ($user): bool {
+        return $job->emailType === EmailType::LOGIN_FAILED && $job->user->id === $user->id;
     });
 });
 
