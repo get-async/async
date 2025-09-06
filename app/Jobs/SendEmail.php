@@ -21,6 +21,7 @@ final class SendEmail implements ShouldQueue
 {
     use Queueable;
 
+    /** @var \App\Mail\ApiKeyCreated|\App\Mail\ApiKeyDestroyed|\App\Mail\MagicLinkCreated|\App\Mail\LoginFailed */
     private Mailable $mailable;
 
     private string $subject;
