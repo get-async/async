@@ -6,7 +6,8 @@
     ".": {
       "package-name": "get-async/async",
       "version-file": "composer.json",
-      "changelog-path": "CHANGELOG.md"
+      "changelog-path": "CHANGELOG.md",
+      "bootstrap-sha": ""
     }
   }
 }
