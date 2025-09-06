@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "php",
+  "changelog-path": "CHANGELOG.md",
+  "packages": {
+    ".": {
+      "package-name": "get-async/async",
+      "version-file": "composer.json",
+      "changelog-path": "CHANGELOG.md"
+    }
+  }
+}
