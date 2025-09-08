@@ -74,6 +74,16 @@ final class Organization extends Model
         return $this->hasMany(EmailSent::class, 'organization_id');
     }
 
+    /**
+     * Get the job families associated with the organization.
+     *
+     * @return HasMany<JobFamily, $this>
+     */
+    public function jobFamilies(): HasMany
+    {
+        return $this->hasMany(JobFamily::class, 'organization_id');
+    }
+
     public function getAvatar(): string
     {
         return new GenerateOrganizationAvatar($this->id . '-' . $this->name)->execute();

@@ -22,6 +22,7 @@ final class CreateJobFamily
         public Organization $organization,
         public User $user,
         public string $jobFamilyName,
+        public ?string $description,
     ) {}
 
     public function execute(): JobFamily
@@ -48,6 +49,7 @@ final class CreateJobFamily
         $this->jobFamily = JobFamily::create([
             'organization_id' => $this->organization->id,
             'name' => $this->jobFamilyName,
+            'description' => $this->description,
         ]);
     }
 

@@ -21,12 +21,15 @@ it('creates a job family', function (): void {
         user: $user,
         organization: $organization,
         jobFamilyName: 'Sales',
+        description: 'Sales job family',
     ))->execute();
 
     $this->assertDatabaseHas('job_families', [
         'id' => $jobFamily->id,
         'organization_id' => $organization->id,
         'name' => 'Sales',
+        'description' => 'Sales job family',
+        'slug' => $jobFamily->id . '-sales',
     ]);
 });
 
@@ -40,5 +43,6 @@ it('throws an exception if user is not part of organization', function (): void 
         user: $user,
         organization: $organization,
         jobFamilyName: 'Sales',
+        description: 'Sales job family',
     ))->execute();
 });

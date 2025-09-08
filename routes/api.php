@@ -28,14 +28,20 @@ Route::name('api.')->group(function (): void {
 
         Route::middleware(['organization.api'])->group(function (): void {
             Route::get('organizations/{id}', [Organizations\OrganizationController::class, 'show'])->name('organizations.show');
+
+            // settings
+            // settings - job families
+            Route::get('organizations/{id}/settings/job-families', [Organizations\Settings\JobFamilyController::class, 'index'])->name('organizations.settings.job-families');
+            Route::post('organizations/{id}/settings/job-families', [Organizations\Settings\JobFamilyController::class, 'create'])->name('organizations.settings.job-families.create');
+            Route::get('organizations/{id}/settings/job-families/{job_family_id}', [Organizations\Settings\JobFamilyController::class, 'show'])->name('organizations.settings.job-families.show');
         });
 
         // settings
-        // logs
+        // settings -logs
         Route::get('settings/logs', [Settings\Profile\LogController::class, 'index'])->name('settings.logs');
         Route::get('settings/logs/{id}', [Settings\Profile\LogController::class, 'show'])->name('settings.logs.show');
 
-        // api keys
+        // settings - api keys
         Route::get('settings/api', [Settings\Security\ApiKeyController::class, 'index'])->name('settings.api');
         Route::get('settings/api/{id}', [Settings\Security\ApiKeyController::class, 'show'])->name('settings.api.show');
         Route::post('settings/api', [Settings\Security\ApiKeyController::class, 'create'])->name('settings.api.create');
