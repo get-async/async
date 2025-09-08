@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $organization_id
  * @property string $name
  * @property string|null $description
- * @property string $slug
+ * @property string|null $slug
  * @property Carbon $created_at
  * @property Carbon|null $updated_at
  */
