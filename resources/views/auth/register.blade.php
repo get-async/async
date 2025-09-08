@@ -15,13 +15,13 @@
 
         <!-- Title -->
         <div class="mb-8">
-          <div class="flex items-center gap-x-2">
+          <div class="flex items-center gap-x-2 mb-2">
             <a href="" class="group flex items-center gap-x-2 transition-transform ease-in-out">
               <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
                 <x-logo width="25" height="25" />
               </div>
             </a>
-            <h1 class="mb-2 text-2xl font-semibold text-gray-900">
+            <h1 class="text-2xl font-semibold text-gray-900">
               {{ __('Sign up for an account') }}
             </h1>
           </div>
@@ -62,7 +62,7 @@
               {{--
                 <div class="mt-4 mb-0">
                 <x-turnstile data-size="flexible" />
-                
+
                 <x-input-error :messages="$errors->get('cf-turnstile-response')" class="mt-2" />
                 </div>
               --}}

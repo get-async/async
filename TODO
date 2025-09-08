@@ -33,3 +33,7 @@
 - [ ] 2fa
 - [x] Automate release notes
 - [ ] Instance administration panel
+- [ ] Job families (CRUD)
+- [ ] API for job families
+- [ ] Documentation for job families
+- [ ] Database seeders for job families

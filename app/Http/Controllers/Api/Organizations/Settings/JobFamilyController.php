@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api\Organizations\Settings;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\JobFamilyResource;
 use App\Actions\CreateJobFamily;
+use App\Actions\UpdateJobFamily;
 use App\Traits\ApiResponses;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -59,6 +60,34 @@ final class JobFamilyController extends Controller
             ->with('organization')
             ->where('id', $jobFamilyId)
             ->firstOrFail();
+
+        return new JobFamilyResource($jobFamily)
+            ->response()
+            ->setStatusCode(200);
+    }
+
+    public function update(Request $request): JsonResponse
+    {
+        $organization = $request->attributes->get('organization');
+        $jobFamilyId = $request->route()->parameter('job_family_id');
+
+        $jobFamily = $organization
+            ->jobFamilies()
+            ->where('id', $jobFamilyId)
+            ->firstOrFail();
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $jobFamily = new UpdateJobFamily(
+            organization: $organization,
+            user: Auth::user(),
+            jobFamily: $jobFamily,
+            jobFamilyName: $validated['name'],
+            description: $validated['description'] ?? null,
+        )->execute();
 
         return new JobFamilyResource($jobFamily)
             ->response()

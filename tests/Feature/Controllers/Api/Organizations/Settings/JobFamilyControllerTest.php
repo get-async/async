@@ -163,3 +163,32 @@ it('can show a specific job family', function () use ($singleJsonStructure): voi
         ],
     ]);
 });
+
+it('can update a specific job family', function () use ($singleJsonStructure): void {
+    $user = User::factory()->create();
+    $organization = Organization::factory()->create();
+    $user->organizations()->attach($organization->id, ['joined_at' => now()]);
+
+    $jobFamily = JobFamily::factory()->create([
+        'organization_id' => $organization->id,
+        'name' => 'Data Science',
+        'description' => 'Data analysis and machine learning roles',
+    ]);
+
+    Sanctum::actingAs($user);
+
+    $response = $this->json('PUT', "/api/organizations/{$organization->id}/settings/job-families/{$jobFamily->id}", [
+        'name' => 'Data Analytics',
+        'description' => 'Data analysis and machine roles',
+    ]);
+
+    $response->assertSuccessful();
+    $response->assertJsonStructure($singleJsonStructure);
+
+    $this->assertDatabaseHas('job_families', [
+        'id' => $jobFamily->id,
+        'organization_id' => $organization->id,
+        'name' => 'Data Analytics',
+        'description' => 'Data analysis and machine roles',
+    ]);
+});
