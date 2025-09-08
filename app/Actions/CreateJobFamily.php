@@ -20,50 +20,43 @@ final class CreateJobFamily
 
     public function __construct(
         public Organization $organization,
-        public string $organizationName,
+        public User $user,
+        public string $jobFamilyName,
     ) {}
 
-    public function execute(): Organization
+    public function execute(): JobFamily
     {
         $this->validate();
         $this->create();
         $this->generateSlug();
-        $this->addFirstUser();
         $this->log();
 
-        return $this->organization;
+        return $this->jobFamily;
     }
 
     private function validate(): void
     {
-        // make sure the organization name doesn't contain any special characters
-        if (in_array(preg_match('/^[a-zA-Z0-9\s\-_]+$/', $this->organizationName), [0, false], true)) {
+        if ($this->user->isPartOfOrganization($this->organization) === false) {
             throw ValidationException::withMessages([
-                'organization_name' => 'Organization name can only contain letters, numbers, spaces, hyphens and underscores',
+                'organization' => 'User is not part of the organization.',
             ]);
         }
     }
 
     private function create(): void
     {
-        $this->organization = Organization::create([
-            'name' => $this->organizationName,
+        $this->jobFamily = JobFamily::create([
+            'organization_id' => $this->organization->id,
+            'name' => $this->jobFamilyName,
         ]);
     }
 
     private function generateSlug(): void
     {
-        $slug = $this->organization->id . '-' . Str::of($this->organizationName)->slug('-');
+        $slug = $this->jobFamily->id . '-' . Str::of($this->jobFamilyName)->slug('-');
 
-        $this->organization->slug = $slug;
-        $this->organization->save();
-    }
-
-    private function addFirstUser(): void
-    {
-        $this->user->organizations()->attach($this->organization->id, [
-            'joined_at' => now(),
-        ]);
+        $this->jobFamily->slug = $slug;
+        $this->jobFamily->save();
     }
 
     private function log(): void
@@ -71,8 +64,8 @@ final class CreateJobFamily
         LogUserAction::dispatch(
             organization: $this->organization,
             user: $this->user,
-            action: 'organization_creation',
-            description: sprintf('Created an organization called %s', $this->organizationName),
+            action: 'job_family_creation',
+            description: sprintf('Created a job family called %s', $this->jobFamilyName),
         )->onQueue('low');
     }
 }
