@@ -24,8 +24,8 @@ final class JobDisciplineResource extends JsonResource
             'type' => 'job_discipline',
             'id' => (string) $this->id,
             'attributes' => [
-                'organization_id' => $this->jobFamily->organization_id,
-                'job_family_id' => $this->jobFamily->id,
+                'organization_id' => $this->organization_id,
+                'job_family_id' => $this->job_family_id,
                 'name' => $this->name,
                 'description' => $this->description,
                 'slug' => $this->slug,
@@ -33,7 +33,7 @@ final class JobDisciplineResource extends JsonResource
                 'updated_at' => $this->updated_at->timestamp,
             ],
             'links' => [
-                'self' => "/api/organizations/{$this->jobFamily->organization_id}/settings/job-disciplines/{$this->id}",
+                'self' => "/api/organizations/{$this->organization_id}/settings/job-disciplines/{$this->id}",
             ],
         ];
     }
