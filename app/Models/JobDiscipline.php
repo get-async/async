@@ -10,22 +10,23 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class JobFamily
+ * Class JobDiscipline
  *
- * A job family is a broad area of work.
- * Examples: Engineering, Design, Product, Marketing, Sales, HR, Finance..
+ * A job discipline is a specific area of work within a job family.
+ * Examples: Software Engineering, Marketing, Sales, HR, Finance.
  *
  * @property int $id
  * @property int $organization_id
+ * @property int $job_family_id
  * @property string $name
  * @property string|null $description
  * @property string|null $slug
  * @property Carbon $created_at
  * @property Carbon|null $updated_at
  */
-final class JobFamily extends Model
+final class JobDiscipline extends Model
 {
-    /** @use HasFactory<\Database\Factories\JobFamilyFactory> */
+    /** @use HasFactory<\Database\Factories\JobDisciplineFactory> */
     use HasFactory;
 
     /**
@@ -33,7 +34,7 @@ final class JobFamily extends Model
      *
      * @var string
      */
-    protected $table = 'job_families';
+    protected $table = 'job_disciplines';
 
     /**
      * The attributes that are mass assignable.
@@ -42,6 +43,7 @@ final class JobFamily extends Model
      */
     protected $fillable = [
         'organization_id',
+        'job_family_id',
         'name',
         'description',
         'slug',
@@ -58,12 +60,22 @@ final class JobFamily extends Model
     }
 
     /**
-     * Get the organization associated with the job family.
+     * Get the organization associated with the job discipline.
      *
      * @return BelongsTo<Organization, $this>
      */
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    /**
+     * Get the job family associated with the job discipline.
+     *
+     * @return BelongsTo<JobFamily, $this>
+     */
+    public function jobFamily(): BelongsTo
+    {
+        return $this->belongsTo(JobFamily::class);
     }
 }
