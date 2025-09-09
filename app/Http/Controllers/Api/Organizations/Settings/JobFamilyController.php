@@ -112,6 +112,6 @@ final class JobFamilyController extends Controller
             jobFamily: $jobFamily,
         )->execute();
 
-        return response()->noContent(204);
+        return response()->noContent();
     }
 }
