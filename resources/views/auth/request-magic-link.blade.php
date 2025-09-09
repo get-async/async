@@ -12,7 +12,7 @@
 
         <!-- Title -->
         <div class="mb-8">
-          <div class="flex items-center gap-x-2 mb-2">
+          <div class="mb-2 flex items-center gap-x-2">
             <a href="" class="group flex items-center gap-x-2 transition-transform ease-in-out">
               <div class="flex h-7 w-7 items-center justify-center transition-all duration-400 group-hover:-translate-y-0.5 group-hover:-rotate-3">
                 <x-logo width="25" height="25" />

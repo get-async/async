@@ -35,6 +35,7 @@ Route::name('api.')->group(function (): void {
             Route::post('organizations/{id}/settings/job-families', [Organizations\Settings\JobFamilyController::class, 'create'])->name('organizations.settings.job-families.create');
             Route::get('organizations/{id}/settings/job-families/{job_family_id}', [Organizations\Settings\JobFamilyController::class, 'show'])->name('organizations.settings.job-families.show');
             Route::put('organizations/{id}/settings/job-families/{job_family_id}', [Organizations\Settings\JobFamilyController::class, 'update'])->name('organizations.settings.job-families.update');
+            Route::delete('organizations/{id}/settings/job-families/{job_family_id}', [Organizations\Settings\JobFamilyController::class, 'destroy'])->name('organizations.settings.job-families.destroy');
         });
 
         // settings

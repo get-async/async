@@ -192,3 +192,26 @@ it('can update a specific job family', function () use ($singleJsonStructure): v
         'description' => 'Data analysis and machine roles',
     ]);
 });
+
+it('can delete a specific job family', function () use ($singleJsonStructure): void {
+    $user = User::factory()->create();
+    $organization = Organization::factory()->create();
+    $user->organizations()->attach($organization->id, ['joined_at' => now()]);
+
+    $jobFamily = JobFamily::factory()->create([
+        'organization_id' => $organization->id,
+        'name' => 'Data Science',
+        'description' => 'Data analysis and machine learning roles',
+    ]);
+
+    Sanctum::actingAs($user);
+
+    $response = $this->json('DELETE', "/api/organizations/{$organization->id}/settings/job-families/{$jobFamily->id}");
+
+    $response->assertSuccessful();
+    $response->assertNoContent();
+
+    $this->assertDatabaseMissing('job_families', [
+        'id' => $jobFamily->id,
+    ]);
+});
