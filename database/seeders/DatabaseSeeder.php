@@ -63,12 +63,12 @@ final class DatabaseSeeder extends Seeder
             'HR' => 'HR job family',
             'Finance' => 'Finance job family',
         ];
-        foreach ($jobFamilies as $jobFamily) {
+        foreach ($jobFamilies as $name => $description) {
             (new CreateJobFamily(
                 organization: $this->organization,
                 user: $this->michael,
-                jobFamilyName: $jobFamily,
-                description: $jobFamily,
+                jobFamilyName: $name,
+                description: $description,
             ))->execute();
         }
     }
