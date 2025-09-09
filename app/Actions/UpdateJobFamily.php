@@ -44,7 +44,6 @@ final class UpdateJobFamily
     private function update(): void
     {
         $this->jobFamily->update([
-            'organization_id' => $this->organization->id,
             'name' => $this->jobFamilyName,
             'description' => $this->description,
         ]);
