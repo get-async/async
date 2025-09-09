@@ -21,13 +21,11 @@ final class DestroyJobFamily
         public JobFamily $jobFamily,
     ) {}
 
-    public function execute(): JobFamily
+    public function execute(): void
     {
         $this->validate();
         $this->delete();
         $this->log();
-
-        return $this->jobFamily;
     }
 
     private function validate(): void
