@@ -64,12 +64,12 @@ final class DatabaseSeeder extends Seeder
             'Finance' => 'Finance job family',
         ];
         foreach ($jobFamilies as $name => $description) {
-            (new CreateJobFamily(
+            new CreateJobFamily(
                 organization: $this->organization,
                 user: $this->michael,
                 jobFamilyName: $name,
                 description: $description,
-            ))->execute();
+            )->execute();
         }
     }
 }
