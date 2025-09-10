@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Actions\CreateAccount;
+use App\Actions\CreateJobDiscipline;
 use App\Actions\CreateJobFamily;
 use App\Models\User;
 use App\Models\Organization;
@@ -26,6 +27,7 @@ final class DatabaseSeeder extends Seeder
         $this->validateEmail();
         $this->addOrganization();
         $this->createJobFamilies();
+        $this->createJobDisciplines();
     }
 
     private function createDunderMifflin(): void
@@ -63,12 +65,54 @@ final class DatabaseSeeder extends Seeder
             'HR' => 'HR job family',
             'Finance' => 'Finance job family',
         ];
+
         foreach ($jobFamilies as $name => $description) {
             new CreateJobFamily(
                 organization: $this->organization,
                 user: $this->michael,
                 jobFamilyName: $name,
                 description: $description,
+            )->execute();
+        }
+    }
+
+    private function createJobDisciplines(): void
+    {
+        // create a list of 40 job disciplines for each job family
+        $jobDisciplines = [
+            'Front end development',
+            'Back end development',
+            'Full stack development',
+            'Mobile development',
+            'UI/UX design',
+            'Product management',
+            'Project management',
+            'Business development',
+            'Sales',
+            'Marketing',
+            'HR',
+            'Finance',
+            'Legal',
+            'Customer support',
+            'Data analysis',
+            'Data engineering',
+            'Data science',
+            'DevOps',
+            'QA',
+            'Security',
+            'IT',
+            'Network engineering',
+            'System administration',
+            'Database administration',
+        ];
+
+        foreach ($jobDisciplines as $name) {
+            new CreateJobDiscipline(
+                organization: $this->organization,
+                jobFamily: $this->organization->jobFamilies()->inRandomOrder()->first(),
+                user: $this->michael,
+                jobDisciplineName: $name,
+                description: null,
             )->execute();
         }
     }
