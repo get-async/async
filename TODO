@@ -37,7 +37,14 @@
 - [x] API for job families
 - [x] Documentation for job families
 - [x] Database seeders for job families
-- [ ] Job disciplines (CRUD)
-- [ ] API for job disciplines
-- [ ] Documentation for job disciplines
-- [ ] Database seeders for job disciplines
+- [x] Job disciplines (CRUD)
+- [x] API for job disciplines
+- [x] Documentation for job disciplines
+- [x] Database seeders for job disciplines
+- [x] Job levels (CRUD)
+- [x] API for job levels
+- [x] Documentation for job levels
+- [x] Database seeders for job levels
+- [ ] Design system
+- [ ] Export organization account
+- [ ] Permissions in organization

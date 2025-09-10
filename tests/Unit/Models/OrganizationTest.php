@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Models\EmailSent;
+use App\Models\JobDiscipline;
 use App\Models\JobFamily;
 use App\Models\Organization;
 use App\Models\User;
@@ -40,6 +41,15 @@ it('has many job families', function (): void {
     ]);
 
     expect($organization->jobFamilies()->exists())->toBeTrue();
+});
+
+it('has many job disciplines', function (): void {
+    $organization = Organization::factory()->create();
+    JobDiscipline::factory()->count(2)->create([
+        'organization_id' => $organization->id,
+    ]);
+
+    expect($organization->jobDisciplines()->exists())->toBeTrue();
 });
 
 it('gets the avatar', function (): void {

@@ -84,6 +84,16 @@ final class Organization extends Model
         return $this->hasMany(JobFamily::class, 'organization_id');
     }
 
+    /**
+     * Get the job disciplines associated with the organization.
+     *
+     * @return HasMany<JobDiscipline, $this>
+     */
+    public function jobDisciplines(): HasMany
+    {
+        return $this->hasMany(JobDiscipline::class, 'organization_id');
+    }
+
     public function getAvatar(): string
     {
         return new GenerateOrganizationAvatar($this->id . '-' . $this->name)->execute();

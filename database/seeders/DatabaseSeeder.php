@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Actions\CreateAccount;
 use App\Actions\CreateJobDiscipline;
 use App\Actions\CreateJobFamily;
+use App\Actions\CreateJobLevel;
 use App\Models\User;
 use App\Models\Organization;
 use Illuminate\Database\Seeder;
@@ -28,6 +29,7 @@ final class DatabaseSeeder extends Seeder
         $this->addOrganization();
         $this->createJobFamilies();
         $this->createJobDisciplines();
+        $this->createJobLevels();
     }
 
     private function createDunderMifflin(): void
@@ -114,5 +116,24 @@ final class DatabaseSeeder extends Seeder
                 description: null,
             )->execute();
         }
+    }
+
+    private function createJobLevels(): void
+    {
+        $jobLevels = [
+            'IC3', 'IC4', 'IC5', 'IC6', 'IC7', 'IC8'
+        ];
+
+        foreach ($this->organization->jobDisciplines as $jobDiscipline) {
+            foreach ($jobLevels as $name) {
+            new CreateJobLevel(
+                organization: $this->organization,
+                jobDiscipline: $jobDiscipline,
+                user: $this->michael,
+                jobLevelName: $name,
+                description: null,
+            )->execute();
+        }
+    }
     }
 }
