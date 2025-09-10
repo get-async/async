@@ -37,7 +37,7 @@ it('deletes a job level', function (): void {
     ))->execute();
 
     $this->assertDatabaseMissing('job_levels', [
-        'id' => $jobDiscipline->id,
+        'id' => $jobLevel->id,
         'organization_id' => $organization->id,
         'job_discipline_id' => $jobDiscipline->id,
     ]);
