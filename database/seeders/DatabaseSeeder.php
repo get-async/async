@@ -78,7 +78,6 @@ final class DatabaseSeeder extends Seeder
 
     private function createJobDisciplines(): void
     {
-        // create a list of 40 job disciplines for each job family
         $jobDisciplines = [
             'Front end development',
             'Back end development',
