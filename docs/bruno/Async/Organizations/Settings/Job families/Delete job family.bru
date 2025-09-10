@@ -1,0 +1,11 @@
+meta {
+  name: Delete job family
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{URL}}/organizations/1/settings/job-families/1
+  body: none
+  auth: inherit
+}

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\JobDiscipline;
 use App\Models\JobFamily;
 use App\Models\Organization;
 
@@ -12,4 +13,13 @@ it('belongs to an organization', function (): void {
     ]);
 
     expect($jobFamily->organization()->exists())->toBeTrue();
+});
+
+it('has many job disciplines', function (): void {
+    $jobFamily = JobFamily::factory()->create();
+    JobDiscipline::factory()->create([
+        'job_family_id' => $jobFamily->id,
+    ]);
+
+    expect($jobFamily->jobDisciplines()->exists())->toBeTrue();
 });

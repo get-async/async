@@ -36,6 +36,13 @@ Route::name('api.')->group(function (): void {
             Route::get('organizations/{id}/settings/job-families/{job_family_id}', [Organizations\Settings\JobFamilyController::class, 'show'])->name('organizations.settings.job-families.show');
             Route::put('organizations/{id}/settings/job-families/{job_family_id}', [Organizations\Settings\JobFamilyController::class, 'update'])->name('organizations.settings.job-families.update');
             Route::delete('organizations/{id}/settings/job-families/{job_family_id}', [Organizations\Settings\JobFamilyController::class, 'destroy'])->name('organizations.settings.job-families.destroy');
+
+            // settings - job disciplines
+            Route::get('organizations/{id}/settings/job-families/{job_family_id}/job-disciplines', [Organizations\Settings\JobDisciplineController::class, 'index'])->name('organizations.settings.job-disciplines');
+            Route::post('organizations/{id}/settings/job-families/{job_family_id}/job-disciplines', [Organizations\Settings\JobDisciplineController::class, 'create'])->name('organizations.settings.job-disciplines.create');
+            Route::get('organizations/{id}/settings/job-families/{job_family_id}/job-disciplines/{job_discipline_id}', [Organizations\Settings\JobDisciplineController::class, 'show'])->name('organizations.settings.job-disciplines.show');
+            Route::put('organizations/{id}/settings/job-families/{job_family_id}/job-disciplines/{job_discipline_id}', [Organizations\Settings\JobDisciplineController::class, 'update'])->name('organizations.settings.job-disciplines.update');
+            Route::delete('organizations/{id}/settings/job-families/{job_family_id}/job-disciplines/{job_discipline_id}', [Organizations\Settings\JobDisciplineController::class, 'destroy'])->name('organizations.settings.job-disciplines.destroy');
         });
 
         // settings

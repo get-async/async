@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class JobFamily
@@ -65,5 +66,15 @@ final class JobFamily extends Model
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    /**
+     * Get the job disciplines associated with the job family.
+     *
+     * @return HasMany<JobDiscipline, $this>
+     */
+    public function jobDisciplines(): HasMany
+    {
+        return $this->hasMany(JobDiscipline::class, 'job_family_id');
     }
 }
