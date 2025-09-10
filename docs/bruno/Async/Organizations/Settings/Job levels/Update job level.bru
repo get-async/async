@@ -1,0 +1,16 @@
+meta {
+  name: Update job level
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/organizations/1/settings/job-families/1/job-disciplines/1/job-levels/1?name=Sales&description=Promote the product
+  body: none
+  auth: inherit
+}
+
+params:query {
+  name: Sales
+  description: Promote the product
+}

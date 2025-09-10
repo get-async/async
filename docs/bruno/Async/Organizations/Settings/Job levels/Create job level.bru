@@ -1,0 +1,16 @@
+meta {
+  name: Create job level
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/organizations/1/settings/job-families/1/job-disciplines/1/job-levels?name=Marketing&description=Promote the product
+  body: none
+  auth: inherit
+}
+
+params:query {
+  name: Marketing
+  description: Promote the product
+}
