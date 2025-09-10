@@ -15,6 +15,9 @@ use Illuminate\Validation\ValidationException;
  */
 final class DestroyJobDiscipline
 {
+    private string $formerName;
+    private string $formerJobFamilyName;
+
     public function __construct(
         public Organization $organization,
         public JobDiscipline $jobDiscipline,
@@ -45,6 +48,8 @@ final class DestroyJobDiscipline
 
     private function destroy(): void
     {
+        $this->formerName = $this->jobDiscipline->name;
+        $this->formerJobFamilyName = $this->jobDiscipline->jobFamily->name;
         $this->jobDiscipline->delete();
     }
 
@@ -54,7 +59,7 @@ final class DestroyJobDiscipline
             organization: $this->organization,
             user: $this->user,
             action: 'job_discipline_deletion',
-            description: sprintf('Deleted a job discipline called %s in %s', $this->jobDiscipline->name, $this->jobDiscipline->jobFamily->name),
+            description: sprintf('Deleted a job discipline called %s in %s', $this->formerName, $this->formerJobFamilyName),
         )->onQueue('low');
     }
 }

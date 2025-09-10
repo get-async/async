@@ -15,6 +15,8 @@ use Illuminate\Validation\ValidationException;
  */
 final class DestroyJobFamily
 {
+    private string $formerName;
+
     public function __construct(
         public Organization $organization,
         public User $user,
@@ -39,6 +41,7 @@ final class DestroyJobFamily
 
     private function delete(): void
     {
+        $this->formerName = $this->jobFamily->name;
         $this->jobFamily->delete();
     }
 
@@ -48,7 +51,7 @@ final class DestroyJobFamily
             organization: $this->organization,
             user: $this->user,
             action: 'job_family_deletion',
-            description: sprintf('Deleted the job family called %s', $this->jobFamily->name),
+            description: sprintf('Deleted the job family called %s', $this->formerName),
         )->onQueue('low');
     }
 }
