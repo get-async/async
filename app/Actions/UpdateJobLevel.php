@@ -61,7 +61,7 @@ final class UpdateJobLevel
             organization: $this->organization,
             user: $this->user,
             action: 'job_level_update',
-            description: sprintf('Updated a job discipline called %s in %s', $this->jobLevelName, $this->jobLevel->jobDiscipline->name),
+            description: sprintf('Updated a job level called %s in %s', $this->jobLevelName, $this->jobLevel->jobDiscipline->name),
         )->onQueue('low');
     }
 }
