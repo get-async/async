@@ -68,12 +68,12 @@ it('throws an exception if user is not part of organization', function (): void 
 
     $user = User::factory()->create();
     $organization = Organization::factory()->create();
-    $jobLevel = JobLevel::factory()->create([
+    $jobDiscipline = JobDiscipline::factory()->create([
         'organization_id' => $organization->id,
     ]);
     $jobLevel = JobLevel::factory()->create([
         'organization_id' => $organization->id,
-        'job_discipline_id' => $jobLevel->id,
+        'job_discipline_id' => $jobDiscipline->id,
     ]);
 
     (new UpdateJobLevel(
