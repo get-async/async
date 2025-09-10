@@ -5,11 +5,13 @@ meta {
 }
 
 post {
-  url: {{URL}}/organizations?name=Dunder Mifflin
-  body: none
+  url: {{URL}}/organizations
+  body: json
   auth: inherit
 }
 
-params:query {
-  name: Dunder Mifflin
+body:json {
+  {
+    "name": "Dunder Mifflin"
+  }
 }

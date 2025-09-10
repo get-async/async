@@ -5,12 +5,19 @@ meta {
 }
 
 post {
-  url: {{URL}}/organizations/1/settings/job-families/1/job-disciplines/1/job-levels?name=Marketing&description=Promote the product
-  body: none
+  url: {{URL}}/organizations/1/settings/job-families/1/job-disciplines/1/job-levels
+  body: json
   auth: inherit
 }
 
-params:query {
-  name: Marketing
-  description: Promote the product
+body:json {
+  {
+    "name": "IC6",
+    "description": "Level 6"
+  }
+}
+
+body:multipart-form {
+  name: IC6
+  description: Level 6
 }

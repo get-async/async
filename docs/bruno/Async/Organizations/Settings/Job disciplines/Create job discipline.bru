@@ -5,12 +5,14 @@ meta {
 }
 
 post {
-  url: {{URL}}/organizations/1/settings/job-families/8/job-disciplines?name=Marketing&description=Promote the product
-  body: none
+  url: {{URL}}/organizations/1/settings/job-families/1/job-disciplines
+  body: json
   auth: inherit
 }
 
-params:query {
-  name: Marketing
-  description: Promote the product
+body:json {
+  {
+    "name": "Marketing",
+    "description": "Promote the product"
+  }
 }

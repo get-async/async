@@ -5,12 +5,14 @@ meta {
 }
 
 put {
-  url: {{URL}}/organizations/1/settings/job-families/1?name=Sales&description=Promote the product
-  body: none
+  url: {{URL}}/organizations/1/settings/job-families/1
+  body: json
   auth: inherit
 }
 
-params:query {
-  name: Sales
-  description: Promote the product
+body:json {
+  {
+    "name": "Sales",
+    "description": "Promote the product"
+  }
 }
