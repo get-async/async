@@ -3,8 +3,8 @@
 ])
 
 @php
-  $base = 'inline-flex items-center justify-center gap-2 relative aria-pressed:z-10 font-medium whitespace-nowrap disabled:pointer-events-none disabled:cursor-default disabled:opacity-75 dark:disabled:opacity-75 h-8 rounded-lg text-sm [:where(&)]:px-3 transition duration-150 ease-out active:scale-[0.97] active:translate-y-[1px] active:shadow-inner active:ease-in transform-gpu focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/40';
-  $style = 'bg-red-600 hover:bg-red-500 text-white border border-red-600/90 border-b-red-700 shadow-xs dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-red-500 dark:border-b-red-600';
+  $base = 'relative inline-flex h-8 transform-gpu items-center justify-center gap-2 rounded-lg text-sm font-medium whitespace-nowrap transition duration-150 ease-out focus-visible:ring-2 focus-visible:ring-red-500/40 focus-visible:outline-none active:translate-y-[1px] active:scale-[0.97] active:shadow-inner active:ease-in disabled:pointer-events-none disabled:cursor-default disabled:opacity-75 aria-pressed:z-10 dark:disabled:opacity-75 [:where(&)]:px-3';
+  $style = 'border border-red-600/90 border-b-red-700 bg-red-600 text-white shadow-xs hover:bg-red-500 dark:border-red-500 dark:border-b-red-600 dark:bg-red-500 dark:text-white dark:hover:bg-red-400';
   $classes = $base . ' ' . $style;
 @endphp
 
