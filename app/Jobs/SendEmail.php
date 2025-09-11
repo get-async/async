@@ -16,6 +16,8 @@ use App\Mail\LoginFailed;
 use Resend\Laravel\Facades\Resend;
 use Illuminate\Support\Facades\Mail;
 use App\Actions\CreateEmailSent;
+use App\Mail\OrganizationExported;
+use Illuminate\Validation\Rules\Email;
 
 final class SendEmail implements ShouldQueue
 {
@@ -66,6 +68,10 @@ final class SendEmail implements ShouldQueue
             EmailType::API_DESTROYED => new ApiKeyDestroyed($this->parameters['label']),
             EmailType::MAGIC_LINK_CREATED => new MagicLinkCreated($this->parameters['link']),
             EmailType::LOGIN_FAILED => new LoginFailed(),
+            EmailType::EXPORT_ORGANIZATION => new OrganizationExported(
+                organizationName: $this->parameters['organizationName'],
+                link: $this->parameters['link']
+            ),
         };
     }
 

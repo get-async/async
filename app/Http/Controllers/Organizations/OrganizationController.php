@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Organizations;
 use App\Actions\CreateOrganization;
 use App\Http\Controllers\Controller;
 use App\Http\ViewModels\Organizations\OrganizationIndexViewModel;
+use App\Jobs\ExportOrganizationAsSql;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -52,6 +53,11 @@ final class OrganizationController extends Controller
 
     public function show(Request $request): View
     {
+        ExportOrganizationAsSql::dispatch(
+            $request->attributes->get('organization'),
+            Auth::user()
+        );
+
         return view('organizations.show', [
             'organization' => $request->attributes->get('organization'),
         ]);
