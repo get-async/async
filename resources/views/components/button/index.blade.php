@@ -9,9 +9,19 @@
 @endphp
 
 @isset($href)
-  <a href="{{ $href }}" {{ $attributes->merge(['class' => $classes]) }}>{{ $slot }}</a>
+  <a href="{{ $href }}" {{ $attributes->merge(['class' => $classes]) }}>
+    @isset($icon)
+      <span class="shrink-0">{{ $icon }}</span>
+    @endisset
+
+    {{ $slot }}
+  </a>
 @else
   <button type="submit" {{ $attributes->merge(['class' => $classes]) }}>
+    @isset($icon)
+      <span class="shrink-0">{{ $icon }}</span>
+    @endisset
+
     {{ $slot }}
   </button>
 @endif
