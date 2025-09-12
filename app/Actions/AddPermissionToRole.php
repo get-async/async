@@ -6,7 +6,6 @@ namespace App\Actions;
 
 use App\Jobs\LogUserAction;
 use App\Models\Organization;
-use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Validation\ValidationException;
@@ -20,16 +19,16 @@ final class AddPermissionToRole
         public Organization $organization,
         public User $user,
         public Role $role,
-        public Permission $permission,
+        public string $permissionKey,
     ) {}
 
     public function execute(): Role
     {
         $this->validate();
-        $this->attach();
+        $this->add();
         $this->log();
 
-        return $this->role->load('permissions');
+        return $this->role->refresh();
     }
 
     private function validate(): void
@@ -46,22 +45,31 @@ final class AddPermissionToRole
             ]);
         }
 
-        if ($this->permission->organization_id !== $this->organization->id) {
+        $key = mb_strtolower($this->permissionKey);
+
+        if (preg_match('/^[a-z0-9]+(\.[a-z0-9]+)*$/', $key) !== 1) {
             throw ValidationException::withMessages([
-                'permission' => 'Permission does not belong to the organization.',
+                'permission' => 'Permission key format is invalid.',
             ]);
         }
 
-        if ($this->role->permissions()->where('permissions.id', $this->permission->id)->exists()) {
+        $current = $this->role->permissions ?? [];
+        if (in_array($key, $current, true)) {
             throw ValidationException::withMessages([
-                'permission' => 'Permission already attached to role.',
+                'permission' => 'Permission already present on role.',
             ]);
         }
     }
 
-    private function attach(): void
+    private function add(): void
     {
-        $this->role->permissions()->attach($this->permission->id);
+        $permissions = $this->role->permissions ?? [];
+        $permissions[] = mb_strtolower($this->permissionKey);
+
+        // Ensure uniqueness just in case.
+        $permissions = array_values(array_unique($permissions));
+        $this->role->permissions = $permissions;
+        $this->role->save();
     }
 
     private function log(): void
@@ -70,7 +78,7 @@ final class AddPermissionToRole
             organization: $this->organization,
             user: $this->user,
             action: 'role_permission_attach',
-            description: sprintf('Attached permission %s to role %s', $this->permission->key, $this->role->name),
+            description: sprintf('Attached permission %s to role %s', mb_strtolower($this->permissionKey), $this->role->name),
         )->onQueue('low');
     }
 }

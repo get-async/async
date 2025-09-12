@@ -51,4 +51,37 @@ return [
 
     'use_resend' => env('USE_RESEND', false),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Permissions used by the application
+    |--------------------------------------------------------------------------
+    |
+    | This value defines all the permissions used by the application.
+    |
+    */
+
+    'permissions' => [
+        [
+            'name' => trans_key('Manage organizations settings'),
+            'description' => trans_key('Allows managing organization settings such as name, description, and other details.'),
+            'permissions' => [
+                [
+                    'key' => 'organization.edit',
+                    'name' => trans_key('Edit organization'),
+                    'description' => trans_key('Allows editing organization details such as name and settings, but not billing.'),
+                ],
+                [
+                    'key' => 'organization.delete',
+                    'name' => trans_key('Delete organization'),
+                    'description' => trans_key('Allows deleting the organization.'),
+                ],
+                [
+                    'key' => 'organization.permission.manage',
+                    'name' => trans_key('Manage permissions, roles and groups'),
+                    'description' => trans_key('Allows managing permissions, roles and groups within the organization.'),
+                ],
+            ],
+        ],
+    ],
+
 ];

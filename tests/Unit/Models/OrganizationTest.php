@@ -7,7 +7,6 @@ use App\Models\Group;
 use App\Models\JobDiscipline;
 use App\Models\JobFamily;
 use App\Models\Organization;
-use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 
@@ -53,16 +52,6 @@ it('has many job disciplines', function (): void {
     ]);
 
     expect($organization->jobDisciplines()->exists())->toBeTrue();
-});
-
-
-it('has many permissions', function (): void {
-    $organization = Organization::factory()->create();
-    Permission::factory()->count(2)->create([
-        'organization_id' => $organization->id,
-    ]);
-
-    expect($organization->permissions()->exists())->toBeTrue();
 });
 
 it('has many roles', function (): void {

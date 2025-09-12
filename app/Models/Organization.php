@@ -95,14 +95,6 @@ final class Organization extends Model
     }
 
     /**
-     * @return HasMany<Permission, $this>
-     */
-    public function permissions(): HasMany
-    {
-        return $this->hasMany(Permission::class, 'organization_id');
-    }
-
-    /**
      * @return HasMany<Role, $this>
      */
     public function roles(): HasMany

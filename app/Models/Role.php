@@ -18,6 +18,7 @@ use Carbon\Carbon;
  * @property string $name
  * @property string|null $slug
  * @property string|null $description
+ * @property array|null $permissions
  * @property Carbon $created_at
  * @property Carbon|null $updated_at
  */
@@ -46,7 +47,9 @@ final class Role extends Model
      */
     protected function casts(): array
     {
-        return [];
+        return [
+            'permissions' => 'array',
+        ];
     }
 
     /**
@@ -55,15 +58,6 @@ final class Role extends Model
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class, 'organization_id');
-    }
-
-    /**
-     * @return BelongsToMany<Permission, $this>
-     */
-    public function permissions(): BelongsToMany
-    {
-        return $this->belongsToMany(Permission::class, 'permission_role')
-            ->withTimestamps();
     }
 
     /**

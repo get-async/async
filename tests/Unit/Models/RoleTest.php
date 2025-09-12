@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Models\Organization;
-use App\Models\Permission;
 use App\Models\Role;
 use App\Models\Group;
 
@@ -14,17 +13,6 @@ it('belongs to an organization', function (): void {
     ]);
 
     expect($role->organization()->exists())->toBeTrue();
-});
-
-it('belongs to many permissions', function (): void {
-    $role = Role::factory()->create();
-    $permission = Permission::factory()->create([
-        'organization_id' => $role->organization_id,
-    ]);
-
-    $role->permissions()->attach($permission->id);
-
-    expect($role->permissions()->exists())->toBeTrue();
 });
 
 it('belongs to many groups', function (): void {

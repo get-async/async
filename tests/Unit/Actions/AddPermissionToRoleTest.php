@@ -5,23 +5,18 @@ declare(strict_types=1);
 use App\Actions\AddPermissionToRole;
 use App\Jobs\LogUserAction;
 use App\Models\Organization;
-use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Validation\ValidationException;
 
-it('attaches a permission to a role', function (): void {
+it('attaches a permission key to a role', function (): void {
     Queue::fake();
 
     $user = User::factory()->create();
     $organization = Organization::factory()->create();
     $organization->users()->attach($user->id, ['joined_at' => now()]);
 
-    $permission = Permission::factory()->create([
-        'organization_id' => $organization->id,
-        'key' => 'organization.create',
-    ]);
     $role = Role::factory()->create([
         'organization_id' => $organization->id,
         'name' => 'Admin',
@@ -31,11 +26,12 @@ it('attaches a permission to a role', function (): void {
         organization: $organization,
         user: $user,
         role: $role,
-        permission: $permission,
+        permissionKey: 'organization.create',
     ))->execute();
 
-    expect($result->permissions->pluck('id')->all())
-        ->toContain($permission->id);
+    expect($result->permissions)
+        ->toBeArray()
+        ->toContain('organization.create');
 
     Queue::assertPushedOn(
         queue: 'low',
@@ -48,14 +44,11 @@ it('attaches a permission to a role', function (): void {
     );
 });
 
-it('throws an exception if user not part of organization when attaching permission', function (): void {
+it('throws an exception if user not part of organization when attaching permission key', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
     $organization = Organization::factory()->create();
-    $permission = Permission::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
     $role = Role::factory()->create([
         'organization_id' => $organization->id,
     ]);
@@ -64,11 +57,11 @@ it('throws an exception if user not part of organization when attaching permissi
         organization: $organization,
         user: $user,
         role: $role,
-        permission: $permission,
+        permissionKey: 'organization.create',
     ))->execute();
 });
 
-it('throws an exception if role not in organization when attaching permission', function (): void {
+it('throws an exception if role not in organization when attaching permission key', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
@@ -76,9 +69,6 @@ it('throws an exception if role not in organization when attaching permission', 
     $organization->users()->attach($user->id, ['joined_at' => now()]);
 
     $otherOrg = Organization::factory()->create();
-    $permission = Permission::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
     $role = Role::factory()->create([
         'organization_id' => $otherOrg->id,
     ]);
@@ -87,52 +77,27 @@ it('throws an exception if role not in organization when attaching permission', 
         organization: $organization,
         user: $user,
         role: $role,
-        permission: $permission,
+        permissionKey: 'organization.create',
     ))->execute();
 });
 
-it('throws an exception if permission not in organization when attaching', function (): void {
+it('throws an exception if permission key already attached', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
     $organization = Organization::factory()->create();
     $organization->users()->attach($user->id, ['joined_at' => now()]);
 
-    $otherOrg = Organization::factory()->create();
-    $permission = Permission::factory()->create([
-        'organization_id' => $otherOrg->id,
-    ]);
     $role = Role::factory()->create([
         'organization_id' => $organization->id,
     ]);
+    $role->permissions = ['organization.create'];
+    $role->save();
 
     (new AddPermissionToRole(
         organization: $organization,
         user: $user,
         role: $role,
-        permission: $permission,
-    ))->execute();
-});
-
-it('throws an exception if permission already attached', function (): void {
-    $this->expectException(ValidationException::class);
-
-    $user = User::factory()->create();
-    $organization = Organization::factory()->create();
-    $organization->users()->attach($user->id, ['joined_at' => now()]);
-
-    $permission = Permission::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
-    $role = Role::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
-    $role->permissions()->attach($permission->id);
-
-    (new AddPermissionToRole(
-        organization: $organization,
-        user: $user,
-        role: $role,
-        permission: $permission,
+        permissionKey: 'organization.create',
     ))->execute();
 });

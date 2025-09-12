@@ -34,6 +34,7 @@ return [
             'app/Http/Controllers',
             'app/Http/ViewModels',
             'app/Actions',
+            'config',
         ],
 
         /**

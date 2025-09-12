@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('slug')->nullable()->index();
             $table->string('description')->nullable();
+            $table->json('permissions')->nullable();
             $table->timestamps();
 
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');

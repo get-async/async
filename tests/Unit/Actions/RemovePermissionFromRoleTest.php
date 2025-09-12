@@ -3,46 +3,36 @@
 declare(strict_types=1);
 
 use App\Actions\RemovePermissionFromRole;
-use App\Actions\AddPermissionToRole;
 use App\Jobs\LogUserAction;
 use App\Models\Organization;
-use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Validation\ValidationException;
 
-it('detaches a permission from a role', function (): void {
+it('detaches a permission key from a role', function (): void {
     Queue::fake();
 
     $user = User::factory()->create();
     $organization = Organization::factory()->create();
     $organization->users()->attach($user->id, ['joined_at' => now()]);
 
-    $permission = Permission::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
     $role = Role::factory()->create([
         'organization_id' => $organization->id,
     ]);
-
-    // Attach first
-    (new AddPermissionToRole(
-        organization: $organization,
-        user: $user,
-        role: $role,
-        permission: $permission,
-    ))->execute();
+    $role->permissions = ['organization.create'];
+    $role->save();
 
     $result = (new RemovePermissionFromRole(
         organization: $organization,
         user: $user,
         role: $role,
-        permission: $permission,
+        permissionKey: 'organization.create',
     ))->execute();
 
-    expect($result->permissions->pluck('id')->all())
-        ->not->toContain($permission->id);
+    expect($result->permissions)
+        ->toBeArray()
+        ->not->toContain('organization.create');
 
     Queue::assertPushedOn(
         queue: 'low',
@@ -55,14 +45,11 @@ it('detaches a permission from a role', function (): void {
     );
 });
 
-it('throws an exception if user not part of organization when detaching permission', function (): void {
+it('throws an exception if user not part of organization when detaching permission key', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
     $organization = Organization::factory()->create();
-    $permission = Permission::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
     $role = Role::factory()->create([
         'organization_id' => $organization->id,
     ]);
@@ -71,11 +58,11 @@ it('throws an exception if user not part of organization when detaching permissi
         organization: $organization,
         user: $user,
         role: $role,
-        permission: $permission,
+        permissionKey: 'organization.create',
     ))->execute();
 });
 
-it('throws an exception if role not in organization when detaching permission', function (): void {
+it('throws an exception if role not in organization when detaching permission key', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
@@ -83,9 +70,6 @@ it('throws an exception if role not in organization when detaching permission', 
     $organization->users()->attach($user->id, ['joined_at' => now()]);
 
     $otherOrg = Organization::factory()->create();
-    $permission = Permission::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
     $role = Role::factory()->create([
         'organization_id' => $otherOrg->id,
     ]);
@@ -94,21 +78,17 @@ it('throws an exception if role not in organization when detaching permission', 
         organization: $organization,
         user: $user,
         role: $role,
-        permission: $permission,
+        permissionKey: 'organization.create',
     ))->execute();
 });
 
-it('throws an exception if permission not in organization when detaching', function (): void {
+it('throws an exception if permission key not attached when detaching', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
     $organization = Organization::factory()->create();
     $organization->users()->attach($user->id, ['joined_at' => now()]);
 
-    $otherOrg = Organization::factory()->create();
-    $permission = Permission::factory()->create([
-        'organization_id' => $otherOrg->id,
-    ]);
     $role = Role::factory()->create([
         'organization_id' => $organization->id,
     ]);
@@ -117,28 +97,6 @@ it('throws an exception if permission not in organization when detaching', funct
         organization: $organization,
         user: $user,
         role: $role,
-        permission: $permission,
-    ))->execute();
-});
-
-it('throws an exception if permission not attached when detaching', function (): void {
-    $this->expectException(ValidationException::class);
-
-    $user = User::factory()->create();
-    $organization = Organization::factory()->create();
-    $organization->users()->attach($user->id, ['joined_at' => now()]);
-
-    $permission = Permission::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
-    $role = Role::factory()->create([
-        'organization_id' => $organization->id,
-    ]);
-
-    (new RemovePermissionFromRole(
-        organization: $organization,
-        user: $user,
-        role: $role,
-        permission: $permission,
+        permissionKey: 'organization.create',
     ))->execute();
 });
