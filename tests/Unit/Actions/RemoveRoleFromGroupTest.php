@@ -46,7 +46,7 @@ it('detaches a role from a group', function (): void {
             return $job->action === 'group_role_detach'
                 && $job->user->id === $user->id
                 && $job->organization->id === $organization->id;
-        }
+        },
     );
 });
 

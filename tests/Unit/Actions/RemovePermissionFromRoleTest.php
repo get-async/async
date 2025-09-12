@@ -51,7 +51,7 @@ it('detaches a permission from a role', function (): void {
             return $job->action === 'role_permission_detach'
                 && $job->user->id === $user->id
                 && $job->organization->id === $organization->id;
-        }
+        },
     );
 });
 

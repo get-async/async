@@ -38,7 +38,7 @@ it('attaches a role to a group', function (): void {
             return $job->action === 'group_role_attach'
                 && $job->user->id === $user->id
                 && $job->organization->id === $organization->id;
-        }
+        },
     );
 });
 

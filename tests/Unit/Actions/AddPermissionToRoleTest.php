@@ -44,7 +44,7 @@ it('attaches a permission to a role', function (): void {
             return $job->action === 'role_permission_attach'
                 && $job->user->id === $user->id
                 && $job->organization->id === $organization->id;
-        }
+        },
     );
 });
 
