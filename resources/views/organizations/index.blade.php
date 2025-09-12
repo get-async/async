@@ -17,10 +17,6 @@
         <x-button.secondary href="{{ route('organizations.create') }}">
           {{ __('New organization') }}
         </x-button.secondary>
-
-        <x-button.danger>
-          {{ __('Delete organization') }}
-        </x-button.danger>
       </div>
 
       <x-box padding="p-0">
