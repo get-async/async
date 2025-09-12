@@ -2,9 +2,10 @@
 <a {{
   $attributes->class([
     'inline underline',
-    'decoration-[1px]',
+    'underline-offset-4',
+    'hover:decoration-[1.15px]',
     'decoration-gray-300 underline-offset-3',
-    'hover:text-blue-500 hover:decoration-blue-500',
+    'hover:text-blue-600 hover:decoration-blue-400',
     'transition-colors duration-200',
   ])
 }}>{{ $slot }}</a>
