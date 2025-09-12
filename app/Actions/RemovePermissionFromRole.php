@@ -65,7 +65,7 @@ final class RemovePermissionFromRole
     {
         $updated = array_values(array_filter(
             $this->role->permissions ?? [],
-            fn(string $p): bool => $p !== mb_strtolower($this->permissionKey),
+            fn(string $permission): bool => $permission !== mb_strtolower($this->permissionKey),
         ));
 
         $this->role->permissions = $updated;
