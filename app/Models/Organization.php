@@ -94,6 +94,30 @@ final class Organization extends Model
         return $this->hasMany(JobDiscipline::class, 'organization_id');
     }
 
+    /**
+     * @return HasMany<Permission, $this>
+     */
+    public function permissions(): HasMany
+    {
+        return $this->hasMany(Permission::class, 'organization_id');
+    }
+
+    /**
+     * @return HasMany<Role, $this>
+     */
+    public function roles(): HasMany
+    {
+        return $this->hasMany(Role::class, 'organization_id');
+    }
+
+    /**
+     * @return HasMany<Group, $this>
+     */
+    public function groups(): HasMany
+    {
+        return $this->hasMany(Group::class, 'organization_id');
+    }
+
     public function getAvatar(): string
     {
         return new GenerateOrganizationAvatar($this->id . '-' . $this->name)->execute();
