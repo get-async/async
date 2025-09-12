@@ -56,7 +56,7 @@ it('updates a permission', function (): void {
     );
 });
 
-it('throws if user not part of organization when updating permission', function (): void {
+it('throws an exception if user not part of organization when updating permission', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
@@ -75,7 +75,7 @@ it('throws if user not part of organization when updating permission', function 
     ))->execute();
 });
 
-it('throws if permission not in organization', function (): void {
+it('throws an exception if permission not in organization', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
@@ -99,7 +99,7 @@ it('throws if permission not in organization', function (): void {
     ))->execute();
 });
 
-it('throws if duplicate key on update', function (): void {
+it('throws an exception if duplicate key on update', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();

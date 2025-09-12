@@ -48,7 +48,7 @@ it('deletes a permission', function (): void {
     );
 });
 
-it('throws if user not part of organization when deleting permission', function (): void {
+it('throws an exception if user not part of organization when deleting permission', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
@@ -64,7 +64,7 @@ it('throws if user not part of organization when deleting permission', function 
     ))->execute();
 });
 
-it('throws if permission not in organization on delete', function (): void {
+it('throws an exception if permission not in organization on delete', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();

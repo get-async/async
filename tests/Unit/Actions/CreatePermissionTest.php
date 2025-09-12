@@ -47,7 +47,7 @@ it('creates a permission', function (): void {
     );
 });
 
-it('throws if user not part of organization when creating permission', function (): void {
+it('throws an exception if user not part of organization when creating permission', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
@@ -62,7 +62,7 @@ it('throws if user not part of organization when creating permission', function 
     ))->execute();
 });
 
-it('throws if duplicate key in same organization', function (): void {
+it('throws an exception if duplicate key in same organization', function (): void {
     $this->expectException(ValidationException::class);
 
     $user = User::factory()->create();
