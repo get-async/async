@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\Group;
 use App\Models\Organization;
 use App\Models\Permission;
