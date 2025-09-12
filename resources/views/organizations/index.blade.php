@@ -16,7 +16,7 @@
 
         <x-button.secondary href="{{ route('organizations.create') }}">
           <x-slot:icon>
-            <x-phosphor-plus class="size-4" />
+            <x-phosphor-plus-bold class="size-4" />
           </x-slot>
           {{ __('New organization') }}
         </x-button.secondary>
