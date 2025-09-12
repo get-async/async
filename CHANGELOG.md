@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.3.0](https://github.com/get-async/async/compare/get-async/async-v0.2.0...get-async/async-v0.3.0) (2025-09-12)
+
+
+### Features
+
+* ability to create/get job family through api ([#19](https://github.com/get-async/async/issues/19)) ([a983b24](https://github.com/get-async/async/commit/a983b2402e7dabb33de6bc2d9440a52880cf35c3))
+* action to create a job family ([#17](https://github.com/get-async/async/issues/17)) ([af02268](https://github.com/get-async/async/commit/af02268f25145a5bdf122d620e5e14403696dd2c))
+* actions to manage job disciplines ([#26](https://github.com/get-async/async/issues/26)) ([ce138de](https://github.com/get-async/async/commit/ce138de2e0d2a718cf6f5e002b0579ae2c02269d))
+* actions to manage job levels ([#29](https://github.com/get-async/async/issues/29)) ([16b0c27](https://github.com/get-async/async/commit/16b0c271dbfdd89a0448ef7461bf0a96d4d0732a))
+* add api for job level ([#30](https://github.com/get-async/async/issues/30)) ([b8a060c](https://github.com/get-async/async/commit/b8a060c2b980eeda97c59bb5cb5b493879e65ae6))
+* add better style on links ([#38](https://github.com/get-async/async/issues/38)) ([62cc854](https://github.com/get-async/async/commit/62cc8543bd7ecd54f011a5a35db0f18fcca00f91))
+* add concept of permissions ([#40](https://github.com/get-async/async/issues/40)) ([cd6290a](https://github.com/get-async/async/commit/cd6290a58b359139332a7718c07e58f641f7a5fe))
+* add danger button ([#36](https://github.com/get-async/async/issues/36)) ([573c156](https://github.com/get-async/async/commit/573c1566a40283a25832544bc325da2d70561f0c))
+* add icon support to buttons ([#37](https://github.com/get-async/async/issues/37)) ([8ec2b70](https://github.com/get-async/async/commit/8ec2b700b55870210748069145aba2d729ff620d))
+* add press effect on buttons ([#35](https://github.com/get-async/async/issues/35)) ([945ff18](https://github.com/get-async/async/commit/945ff182bf114ece7eeaee4ee160786927bbe9b6))
+* add seeder for job levels ([#33](https://github.com/get-async/async/issues/33)) ([faadbad](https://github.com/get-async/async/commit/faadbadf13a394b66dc00ac4e2452dbc0e65ca45))
+* api to control job disciplines ([#27](https://github.com/get-async/async/issues/27)) ([e1a5e47](https://github.com/get-async/async/commit/e1a5e47e8dbf8eb628337b30dfc9f34d518e609a))
+* api to destroy a job family ([#23](https://github.com/get-async/async/issues/23)) ([ce84e4a](https://github.com/get-async/async/commit/ce84e4aedf3b1236b5699be86e4be98eb28b7d21))
+* better sidebar ([#39](https://github.com/get-async/async/issues/39)) ([09dffac](https://github.com/get-async/async/commit/09dffacc4cc4b8825a9a58582d61f2a7a4d4291f))
+* default permissions when creating an organization ([#42](https://github.com/get-async/async/issues/42)) ([0ded54d](https://github.com/get-async/async/commit/0ded54d1ae90f23d0c31fbad3ac58f58bac0d91e))
+* fine tune the concept of permission ([#41](https://github.com/get-async/async/issues/41)) ([1f45d35](https://github.com/get-async/async/commit/1f45d35a71bbc01d87ca2029e4b4ec9e318e86da))
+* structure of job discipline ([#24](https://github.com/get-async/async/issues/24)) ([4b51a13](https://github.com/get-async/async/commit/4b51a137db7a3bdd5b7a852de69b5d81742b0bce))
+* update job family in api ([#22](https://github.com/get-async/async/issues/22)) ([ec0abbd](https://github.com/get-async/async/commit/ec0abbdca44ec35e15f4f40a13be37f35c4bbb86))
+
+
+### Miscellaneous Chores
+
+* add seeder for job families ([#25](https://github.com/get-async/async/issues/25)) ([7d7b319](https://github.com/get-async/async/commit/7d7b3191db4f32024fd1d93c4b5b35a4637bb44b))
+* update seeder with job disciplines ([#28](https://github.com/get-async/async/issues/28)) ([cbed3d3](https://github.com/get-async/async/commit/cbed3d393a5c254c706a4d81f4fdae66c6d17d90))
+
 ## [0.2.0](https://github.com/get-async/async/compare/get-async/async-v0.1.0...get-async/async-v0.2.0) (2025-09-06)
 
 
