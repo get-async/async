@@ -10,11 +10,11 @@
       <a class="rounded-md border border-transparent px-2 py-1 font-medium hover:border-gray-200 hover:bg-gray-100" href="/">{{ __('Dashboard') }}</a>
       <span class="text-gray-500">/</span>
       <div class="flex items-center gap-0">
-      <a class="rounded-md border border-transparent px-2 py-1 font-medium hover:border-gray-200 hover:bg-gray-100">Dunder Mifflin</a>
-      <div class="rounded-md border border-transparent px-1 py-1 font-medium hover:border-gray-200 hover:bg-gray-100">
-        <x-phosphor-caret-up-down class="size-4 text-gray-600" />
+        <a class="rounded-md border border-transparent px-2 py-1 font-medium hover:border-gray-200 hover:bg-gray-100">Dunder Mifflin</a>
+        <div class="rounded-md border border-transparent px-1 py-1 font-medium hover:border-gray-200 hover:bg-gray-100">
+          <x-phosphor-caret-up-down class="size-4 text-gray-600" />
+        </div>
       </div>
-    </div>
     </div>
 
     <!-- separator -->
