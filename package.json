@@ -7,22 +7,22 @@
   },
   "dependencies": {
     "@imacrayon/alpine-ajax": "^0.12.4",
-    "@tailwindcss/vite": "^4.1.13",
+    "@tailwindcss/vite": "^4.1.14",
     "alpinejs": "^3.15.0",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.1",
     "instant.page": "^5.2.0",
     "laravel-vite-plugin": "^2.0.1",
-    "playwright": "^1.55.0",
+    "playwright": "^1.56.1",
     "prettier": "^3.6.2",
     "prettier-plugin-blade": "^2.1.21",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "tailwindcss": "^4.1.13",
-    "vite": "^7.1.5"
+    "tailwindcss": "^4.1.14",
+    "vite": "^7.1.10"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.48.0",
-    "@tailwindcss/oxide-linux-x64-gnu": "^4.1.13",
-    "lightningcss-linux-x64-gnu": "^1.30.1"
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.1.14",
+    "lightningcss-linux-x64-gnu": "^1.30.2"
   }
 }
