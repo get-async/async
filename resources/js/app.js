@@ -3,7 +3,7 @@ import 'instant.page';
 // --- Turbo Drive ---
 import * as Turbo from '@hotwired/turbo';
 window.Turbo = Turbo;
-Turbo.session.drive = true; // explicit (enabled by default)
+Turbo.session.drive = false; // explicit (enabled by default)
 
 // --- Alpine ---
 import Alpine from 'alpinejs';
