@@ -10,6 +10,7 @@ on:
     types: [opened, synchronize, reopened]
   release:
     types: [created]
+  workflow_dispatch:
 
 env:
   default-php-version: '8.4'
