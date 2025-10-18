@@ -1,8 +1,8 @@
 @props([
-  'enableTurbo' => true,
+  'turbo' => true,
 ])
 
-<a @if ($enableTurbo) data-turbo="true" @endif {{
+<a @if ($turbo) data-turbo="true" @endif {{
   $attributes->class([
     'inline underline',
     'underline-offset-4',

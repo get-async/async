@@ -29,8 +29,8 @@ it('sends email the traditional way', function (): void {
     $job->handle();
 
     Mail::assertQueued(ApiKeyDestroyed::class, function (ApiKeyDestroyed $mail) use ($user): bool {
-        return $mail->hasTo($user->email) &&
-            $mail->label === '123';
+        return $mail->hasTo($user->email)
+            && $mail->label === '123';
     });
 
     $emailSent = EmailSent::latest()->first();
@@ -49,11 +49,11 @@ it('sends email with resend facade', function (): void {
     $emailsMock->shouldReceive('send')
         ->once()
         ->with(Mockery::on(function ($args) {
-            return $args['from'] === 'noreply@example.com' &&
-                   $args['to'] === ['michael.scott@dundermifflin.com'] &&
-                   $args['subject'] === 'API key removed' &&
-                   is_string($args['html']) &&
-                   mb_strlen($args['html']) > 0;
+            return $args['from'] === 'noreply@example.com'
+                   && $args['to'] === ['michael.scott@dundermifflin.com']
+                   && $args['subject'] === 'API key removed'
+                   && is_string($args['html'])
+                   && mb_strlen($args['html']) > 0;
         }))
         ->andReturn(\Resend\Email::from(['id' => 'resend-uuid-12345']));
 
