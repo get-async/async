@@ -20,14 +20,14 @@ final class OrganizationController extends Controller
             user: Auth::user(),
         );
 
-        return view('organizations.index', [
+        return view('organization.index', [
             'viewModel' => $viewModel,
         ]);
     }
 
     public function create(): View
     {
-        return view('organizations.create');
+        return view('organization.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -46,14 +46,16 @@ final class OrganizationController extends Controller
             organizationName: $validated['organization_name'],
         )->execute();
 
-        return redirect()->route('organizations.show', $organization->slug)
+        return redirect()->route('organization.show', $organization->slug)
             ->with('status', __('Organization created successfully'));
     }
 
     public function show(Request $request): View
     {
-        return view('organizations.show', [
-            'organization' => $request->attributes->get('organization'),
+        $organization = $request->attributes->get('organization');
+
+        return view('organization.show', [
+            'organization' => $organization,
         ]);
     }
 }

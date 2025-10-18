@@ -22,7 +22,7 @@ it('authenticates a user', function (): void {
     ]);
 
     $this->assertAuthenticated();
-    $response->assertRedirect(route('organizations.index', absolute: false));
+    $response->assertRedirect(route('organization.index', absolute: false));
 });
 
 it('does not authenticate a user with invalid password', function (): void {

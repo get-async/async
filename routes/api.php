@@ -23,11 +23,11 @@ Route::name('api.')->group(function (): void {
         Route::put('me', [Settings\Profile\ProfileController::class, 'update'])->name('me.update');
 
         // organizations
-        Route::post('organizations', [Organizations\OrganizationController::class, 'create'])->name('organizations.create');
-        Route::get('organizations', [Organizations\OrganizationController::class, 'index'])->name('organizations.index');
+        Route::post('organizations', [Organizations\OrganizationController::class, 'create'])->name('organization.create');
+        Route::get('organizations', [Organizations\OrganizationController::class, 'index'])->name('organization.index');
 
         Route::middleware(['organization.api'])->group(function (): void {
-            Route::get('organizations/{id}', [Organizations\OrganizationController::class, 'show'])->name('organizations.show');
+            Route::get('organizations/{id}', [Organizations\OrganizationController::class, 'show'])->name('organization.show');
 
             // settings
             // settings - job families

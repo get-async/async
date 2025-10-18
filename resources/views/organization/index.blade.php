@@ -14,7 +14,7 @@
       <div class="mb-4 flex items-center justify-between">
         <h2 class="text-lg font-medium text-gray-900">{{ __('Your organizations') }}</h2>
 
-        <x-button.secondary href="{{ route('organizations.create') }}">
+        <x-button.secondary href="{{ route('organization.create') }}" turbo="true">
           <x-slot:icon>
             <x-phosphor-plus-bold class="size-4" />
           </x-slot>
@@ -29,7 +29,7 @@
               <img src="{{ $organization->avatar }}" class="h-8 w-8" alt="Avatar" />
             </div>
 
-            <x-link href="{{ route('organizations.show', $organization->slug) }}">{{ $organization->name }}</x-link>
+            <x-link href="{{ route('organization.show', $organization->slug) }}">{{ $organization->name }}</x-link>
           </div>
         @empty
           <div class="flex flex-col items-center gap-2 p-4 text-center text-gray-500">

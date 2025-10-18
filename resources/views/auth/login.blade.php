@@ -67,7 +67,7 @@
         <!-- local login link -->
         @env('local')
           <x-box class="mb-8 text-center text-sm">
-            <x-login-link label="Michael Scott" email="michael.scott@dundermifflin.com" redirect-url="{{ route('organizations.index') }}" />
+            <x-login-link label="Michael Scott" email="michael.scott@dundermifflin.com" redirect-url="{{ route('organization.index') }}" />
           </x-box>
         @endenv
 
