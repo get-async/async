@@ -1,5 +1,8 @@
-{{-- It's important that this file does NOT have a newline at the end. --}}
-<a {{
+@props([
+  'turbo' => true,
+])
+
+<a @if ($turbo) data-turbo="true" @endif {{
   $attributes->class([
     'inline underline',
     'underline-offset-4',
