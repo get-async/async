@@ -4,7 +4,7 @@
   </div>
 
   <div class="flex justify-between">
-    <x-button.secondary href="{{ route('settings.security.index') }}" x-target="new-api-key-form">
+    <x-button.secondary href="{{ route('settings.security.index') }}" enable-turbo="true" x-target="new-api-key-form">
       {{ __('Cancel') }}
     </x-button.secondary>
 

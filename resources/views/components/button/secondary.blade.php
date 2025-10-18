@@ -1,5 +1,6 @@
 @props([
   'href',
+  'enableTurbo' => false,
 ])
 
 @php

@@ -6,6 +6,7 @@
     "dev": "vite"
   },
   "dependencies": {
+    "@hotwired/turbo": "^8.0.18",
     "@imacrayon/alpine-ajax": "^0.12.4",
     "@tailwindcss/vite": "^4.1.14",
     "alpinejs": "^3.15.0",
