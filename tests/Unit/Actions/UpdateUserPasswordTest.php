@@ -29,9 +29,9 @@ it('updates user password', function (): void {
         queue: 'low',
         job: LogUserAction::class,
         callback: function (LogUserAction $job) use ($user): bool {
-            return $job->action === 'update_user_password' &&
-                $job->user->id === $user->id &&
-                $job->description === 'Updated their password';
+            return $job->action === 'update_user_password'
+                && $job->user->id === $user->id
+                && $job->description === 'Updated their password';
         },
     );
 });
