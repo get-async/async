@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Route;
 Route::put('/locale', [LocaleController::class, 'update'])->name('locale.update');
 
 Route::middleware(['auth', 'verified', 'throttle:60,1', 'set.locale'])->group(function (): void {
-    Route::get('organizations', [Organizations\OrganizationController::class, 'index'])->name('organizations.index');
-    Route::get('organizations/create', [Organizations\OrganizationController::class, 'create'])->name('organizations.create');
-    Route::post('organizations', [Organizations\OrganizationController::class, 'store'])->name('organizations.store');
+    Route::get('organizations', [Organizations\OrganizationController::class, 'index'])->name('organization.index');
+    Route::get('organizations/create', [Organizations\OrganizationController::class, 'create'])->name('organization.create');
+    Route::post('organizations', [Organizations\OrganizationController::class, 'store'])->name('organization.store');
 
     // organization
     Route::middleware(['organization'])->group(function (): void {
-        Route::get('organizations/{slug}', [Organizations\OrganizationController::class, 'show'])->name('organizations.show');
+        Route::get('organizations/{slug}', [Organizations\OrganizationController::class, 'show'])->name('organization.show');
     });
 
     // settings redirect

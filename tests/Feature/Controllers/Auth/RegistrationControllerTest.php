@@ -18,5 +18,5 @@ it('registers a new organization', function (): void {
     ]);
 
     $this->assertAuthenticated();
-    $response->assertRedirect(route('organizations.index', absolute: false));
+    $response->assertRedirect(route('organization.index', absolute: false));
 });

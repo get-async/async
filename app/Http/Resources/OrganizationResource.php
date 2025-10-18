@@ -31,7 +31,7 @@ final class OrganizationResource extends JsonResource
                 'updated_at' => $this->updated_at->timestamp,
             ],
             'links' => [
-                'self' => route('api.organizations.show', $this->id),
+                'self' => route('api.organization.show', $this->id),
             ],
         ];
     }

@@ -19,7 +19,7 @@
             <span class="">{{ $log->username }}</span>
             |
             @if ($log->organization_name)
-              <x-link href="{{ route('organizations.show', $log->organization_id) }}">{{ $log->organization_name }}</x-link>
+              <x-link href="{{ route('organization.show', $log->organization_id) }}">{{ $log->organization_name }}</x-link>
               |
             @endif
 

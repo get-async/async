@@ -22,7 +22,7 @@ test('users can authenticate using the login screen', function (): void {
     ]);
 
     $this->assertAuthenticated();
-    $response->assertRedirect(route('organizations.index', absolute: false));
+    $response->assertRedirect(route('organization.index', absolute: false));
 });
 
 test('users can not authenticate with invalid password', function (): void {

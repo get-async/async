@@ -10,7 +10,7 @@
   </x-slot>
 
   <x-breadcrumb :items="[
-    ['label' => __('Dashboard'), 'route' => route('organizations.index')],
+    ['label' => __('Dashboard'), 'route' => route('organization.index')],
     ['label' => __('Settings'), 'route' => route('settings.profile.index')],
     ['label' => __('Logs')]
   ]" />
@@ -34,7 +34,7 @@
                     <span class="">{{ $log->getUserName() }}</span>
                     |
                     @if ($log->organization)
-                      <x-link href="{{ route('organizations.show', $log->organization->id) }}">{{ $log->organization->name }}</x-link>
+                      <x-link href="{{ route('organization.show', $log->organization->id) }}">{{ $log->organization->name }}</x-link>
                       |
                     @endif
 

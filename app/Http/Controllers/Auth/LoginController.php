@@ -55,7 +55,7 @@ final class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('organizations.index', absolute: false));
+        return redirect()->intended(route('organization.index', absolute: false));
     }
 
     public function destroy(Request $request): RedirectResponse
