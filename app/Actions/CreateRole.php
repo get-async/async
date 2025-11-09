@@ -18,6 +18,8 @@ final class CreateRole
 {
     private Role $role;
 
+    publ
+
     public function __construct(
         public Organization $organization,
         public User $user,
