@@ -3,10 +3,10 @@
   "workspaces": {
     "": {
       "dependencies": {
-        "@hotwired/turbo": "^8.0.18",
-        "@imacrayon/alpine-ajax": "^0.12.4",
-        "@tailwindcss/vite": "^4.1.14",
-        "alpinejs": "^3.15.0",
+        "@hotwired/turbo": "^8.0.20",
+        "@imacrayon/alpine-ajax": "^0.12.6",
+        "@tailwindcss/vite": "^4.1.17",
+        "alpinejs": "^3.15.1",
         "autoprefixer": "^10.4.21",
         "concurrently": "^9.2.1",
         "instant.page": "^5.2.0",
@@ -15,12 +15,12 @@
         "prettier": "^3.6.2",
         "prettier-plugin-blade": "^2.1.21",
         "prettier-plugin-tailwindcss": "^0.6.14",
-        "tailwindcss": "^4.1.14",
-        "vite": "^7.1.10",
+        "tailwindcss": "^4.1.17",
+        "vite": "^7.2.2",
       },
       "optionalDependencies": {
-        "@rollup/rollup-linux-x64-gnu": "4.48.0",
-        "@tailwindcss/oxide-linux-x64-gnu": "^4.1.14",
+        "@rollup/rollup-linux-x64-gnu": "4.53.1",
+        "@tailwindcss/oxide-linux-x64-gnu": "^4.1.17",
         "lightningcss-linux-x64-gnu": "^1.30.2",
       },
     },
@@ -122,7 +122,7 @@
 
     "@rollup/rollup-linux-s390x-gnu": ["@rollup/rollup-linux-s390x-gnu@4.45.1", "", { "os": "linux", "cpu": "s390x" }, "sha512-NITBOCv3Qqc6hhwFt7jLV78VEO/il4YcBzoMGGNxznLgRQf43VQDae0aAzKiBeEPIxnDrACiMgbqjuihx08OOw=="],
 
-    "@rollup/rollup-linux-x64-gnu": ["@rollup/rollup-linux-x64-gnu@4.48.0", "", { "os": "linux", "cpu": "x64" }, "sha512-GUdZKTeKBq9WmEBzvFYuC88yk26vT66lQV8D5+9TgkfbewhLaTHRNATyzpQwwbHIfJvDJ3N9WJ90wK/uR3cy3Q=="],
+    "@rollup/rollup-linux-x64-gnu": ["@rollup/rollup-linux-x64-gnu@4.53.1", "", { "os": "linux", "cpu": "x64" }, "sha512-E/n8x2MSjAQgjj9IixO4UeEUeqXLtiA7pyoXCFYLuXpBA/t2hnbIdxHfA7kK9BFsYAoNU4st1rHYdldl8dTqGA=="],
 
     "@rollup/rollup-linux-x64-musl": ["@rollup/rollup-linux-x64-musl@4.45.1", "", { "os": "linux", "cpu": "x64" }, "sha512-a6WIAp89p3kpNoYStITT9RbTbTnqarU7D8N8F2CV+4Cl9fwCOZraLVuVFvlpsW0SbIiYtEnhCZBPLoNdRkjQFw=="],
 
