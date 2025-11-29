@@ -20,9 +20,13 @@ final class AccountController extends Controller
 
     public function destroy(Request $request): RedirectResponse
     {
+        $validated = $request->validate([
+            'feedback' => 'required|string|min:3|max:255',
+        ]);
+
         new DestroyAccount(
             user: Auth::user(),
-            reason: $request->input('feedback'),
+            reason: $validated['feedback'],
         )->execute();
 
         $request->session()->invalidate();
