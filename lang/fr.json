@@ -1,6 +1,7 @@
 {
     ":count API key(s) created": ":count clé(s) API créée(s)",
     "Account": "Compte",
+    "Account administration": "Gestion du compte",
     "All actions performed on your account are logged here.": "Toutes les actions effectuées sur votre compte sont enregistrées ici.",
     "Allows deleting the organization.": "Permet de supprimer l'organisation.",
     "Allows editing organization details such as name and settings, but not billing.": "Permet de modifier les détails de l'organisation, tels que le nom et les paramètres, mais pas la facturation.",
@@ -15,6 +16,7 @@
     "Appearance": "Apparence",
     "Appearance | Settings": "Apparence | Paramètres",
     "A reset link will be sent if the account exists.": "Un lien de réinitialisation sera envoyé si le compte existe.",
+    "Are you absolutely sure? This action cannot be undone.": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action ne peut pas être annulée.",
     "Back to login": "Retour à la connexion",
     "Back to the marketing website": "Retour au site marketing",
     "Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.": "Avant de commencer, pourriez-vous vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer ? Si vous n'avez pas reçu l'e-mail, nous vous en enverrons volontiers un autre.",
@@ -37,7 +39,9 @@
     "Dark": "Sombre",
     "Dashboard": "Tableau de bord",
     "Delete": "Supprimer",
+    "Delete account": "Supprimer le compte",
     "Delete organization": "Supprimer l'organisation",
+    "Delete your account": "Supprimer votre compte",
     "Delivered at:": "Livré à :",
     "Details": "Détails",
     "Docs": "Documentation",
@@ -89,6 +93,7 @@
     "Personal API Keys": "Clés API personnelles",
     "Please copy your API key now. For security reasons, it won't be shown again.": "Veuillez copier votre clé API maintenant. Pour des raisons de sécurité, elle ne sera plus affichée après.",
     "Please enter your new password below": "Veuillez entrer votre nouveau mot de passe ci-dessous",
+    "Please tell us why you are leaving (required)": "Veuillez nous dire pourquoi vous quittez (obligatoire)",
     "Profile": "Profil",
     "Receive a link to login": "Recevoir un lien pour se connecter",
     "Remember me": "Se souvenir de moi",
@@ -120,6 +125,8 @@
     "We will never, ever send you marketing emails.": "Nous ne vous enverrons jamais, jamais d'e-mails marketing.",
     "You are here:": "Vous êtes ici :",
     "You are not a member of any organizations yet.": "Vous n'êtes pas encore membre d'aucune organisation.",
+    " Your account and all data will be deleted immediately and cannot be restored. This is irreversible. Please be certain.": " Votre compte et toutes les données seront supprimés immédiatement et ne pourront pas être restaurés. Ceci est irréversible. Veuillez en être certain.",
+    "Your feedback helps us improve our service...": "Votre retour nous aide à améliorer notre service...",
     "Your organizations": "Vos organisations",
     "You will be the administrator of this account.": "Vous serez l'administrateur de ce compte."
 }

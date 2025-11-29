@@ -1,6 +1,7 @@
 @props([
   'title' => null,
   'padding' => 'p-4',
+  'description' => null,
 ])
 
 <div class="flex flex-col gap-2">
