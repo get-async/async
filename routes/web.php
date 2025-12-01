@@ -42,6 +42,10 @@ Route::middleware(['auth', 'verified', 'throttle:60,1', 'set.locale'])->group(fu
     Route::get('settings/api-keys/create', [Settings\Security\ApiKeyController::class, 'create'])->name('settings.api-keys.create');
     Route::post('settings/api-keys', [Settings\Security\ApiKeyController::class, 'store'])->name('settings.api-keys.store');
     Route::delete('settings/api-keys/{apiKey}', [Settings\Security\ApiKeyController::class, 'destroy'])->name('settings.api-keys.destroy');
+
+    // account
+    Route::get('settings/account', [Settings\AccountController::class, 'index'])->name('settings.account.index');
+    Route::delete('settings/account', [Settings\AccountController::class, 'destroy'])->name('settings.account.destroy');
 });
 
 require __DIR__ . '/auth.php';
