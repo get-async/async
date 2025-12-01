@@ -24,8 +24,11 @@ final class SecurityController extends Controller
             ]);
 
         return view('settings.security.index', [
-            'user' => $request->user(),
+            'user' => Auth::user(),
+            'preferredMethod' => Auth::user()->two_factor_preferred_method,
             'apiKeys' => $apiKeys,
+            'recoveryCodes' => Auth::user()->two_factor_recovery_codes ?? [],
+            'has2fa' => Auth::user()->two_factor_confirmed_at !== null,
         ]);
     }
 }

@@ -1,10 +1,3 @@
-<?php
-/*
- * @var \App\Models\User $user
- * @var \App\Http\ViewModels\ProfileShowViewModel $viewModel
- */
-?>
-
 <x-app-layout>
   <x-slot:title>
     {{ __('Security and access') }}
