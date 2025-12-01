@@ -14,7 +14,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table): void {
-            $table->string('two_factor_preferred_method')->default(TwoFactorType::NONE->value)->after('does_display_age');
+            $table->string('two_factor_preferred_method')->default(TwoFactorType::NONE->value)->after('two_factor_confirmed_at');
         });
     }
 
