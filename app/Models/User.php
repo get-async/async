@@ -23,6 +23,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $nickname
  * @property string $email
  * @property Carbon|null $email_verified_at
+ * @property string|null $two_factor_secret
+ * @property array|null $two_factor_recovery_codes
+ * @property string|null $two_factor_preferred_method
+ * @property Carbon|null $two_factor_confirmed_at
  * @property Carbon $created_at
  * @property string $password
  * @property string $locale
@@ -48,6 +52,10 @@ final class User extends Authenticatable implements MustVerifyEmail
         'password',
         'locale',
         'email_verified_at',
+        'two_factor_preferred_method',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+        'two_factor_confirmed_at',
     ];
 
     /**
@@ -70,6 +78,8 @@ final class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'two_factor_confirmed_at' => 'datetime',
+            'two_factor_recovery_codes' => 'array',
         ];
     }
 

@@ -26,6 +26,9 @@
         <!-- user password -->
         @include('settings.security.partials.password', ['user' => $user])
 
+        <!-- two factor authentication -->
+        @include('settings.security.partials.2fa.index')
+
         <!-- api keys -->
         @include('settings.security.partials.api.index', ['apiKeys' => $apiKeys])
       </div>

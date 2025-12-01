@@ -38,6 +38,10 @@ Route::middleware(['auth', 'verified', 'throttle:60,1', 'set.locale'])->group(fu
     Route::put('settings/password', [Settings\Security\PasswordController::class, 'update'])->name('settings.password.update');
     Route::get('settings/appearance', [Settings\Security\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 
+    // 2fa
+    Route::put('administration/security/2fa', [Settings\Security\Preferred2FAController::class, 'update'])->name('settings.security.2fa.update');
+    Route::put('settings/password', [Settings\Security\PasswordController::class, 'update'])->name('settings.password.update');
+
     // api keys
     Route::get('settings/api-keys/create', [Settings\Security\ApiKeyController::class, 'create'])->name('settings.api-keys.create');
     Route::post('settings/api-keys', [Settings\Security\ApiKeyController::class, 'store'])->name('settings.api-keys.store');
