@@ -53,6 +53,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Email that receives account deletion notifications
+    |--------------------------------------------------------------------------
+    |
+    | This email is used to receive notifications when an account is deleted.
+    |
+    */
+
+    'account_deletion_notification_email' => env('ACCOUNT_DELETION_NOTIFICATION_EMAIL', 'hello@example.com'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Permissions used by the application
     |--------------------------------------------------------------------------
     |
