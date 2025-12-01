@@ -14,6 +14,7 @@ it('validates the 2fa QR code and generates recovery codes', function (): void {
         'two_factor_confirmed_at' => null,
     ]);
 
+    $resendMock = Mockery::mock();
     $google2faMock = Mockery::mock('overload:' . Google2FA::class);
     $google2faMock->shouldReceive('verifyKey')
         ->once()
