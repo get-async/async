@@ -1,0 +1,42 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers\Settings\Security;
+
+use App\Actions\Generate2faQRCode;
+use App\Actions\Validate2faQRCode;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use Illuminate\Http\Request;
+
+final class TwoFAController extends Controller
+{
+    public function new(): View
+    {
+        $code = (new Generate2faQRCode(
+            user: Auth::user(),
+        ))->execute();
+
+        return view('settings.security.partials.2fa.new', [
+            'secret' => $code['secret'],
+            'qrCodeSvg' => $code['qrCodeSvg'],
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'token' => 'required|numeric|digits:6',
+        ]);
+
+        (new Validate2faQRCode(
+            user: Auth::user(),
+            token: (string) $request->input('token'),
+        ))->execute();
+
+        return redirect()->route('settings.security.index')
+            ->with('status', __('Two-factor authentication has been enabled successfully.'));
+    }
+}
