@@ -10,14 +10,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use InvalidArgumentException;
 
 final class TwoFAController extends Controller
 {
-    public function new(): View
+    public function create(): View
     {
-        $code = (new Generate2faQRCode(
+        $code = new Generate2faQRCode(
             user: Auth::user(),
-        ))->execute();
+        )->execute();
 
         return view('settings.security.partials.2fa.new', [
             'secret' => $code['secret'],
@@ -31,10 +32,16 @@ final class TwoFAController extends Controller
             'token' => 'required|numeric|digits:6',
         ]);
 
-        (new Validate2faQRCode(
-            user: Auth::user(),
-            token: (string) $request->input('token'),
-        ))->execute();
+        try {
+            new Validate2faQRCode(
+                user: Auth::user(),
+                token: (string) $request->input('token'),
+            )->execute();
+        } catch (InvalidArgumentException) {
+            return back()
+                ->withErrors(['token' => __('The provided token is invalid.')])
+                ->withInput();
+        }
 
         return redirect()->route('settings.security.index')
             ->with('status', __('Two-factor authentication has been enabled successfully.'));

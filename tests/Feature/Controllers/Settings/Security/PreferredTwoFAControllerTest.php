@@ -7,10 +7,10 @@ use App\Models\User;
 it('lets user define the preferred two-factor authentication method', function (): void {
     $user = User::factory()->create();
 
-    $response = $this->actingAs($this->user)
-        ->from('/administration/security')
-        ->put('/administration/security/2fa', [
-            'method' => 'authenticator',
+    $response = $this->actingAs($user)
+        ->from('/settings/security')
+        ->put('/settings/security/2fa', [
+            'preferred_method' => 'authenticator',
         ]);
 
     $response->assertRedirect('/settings/security');

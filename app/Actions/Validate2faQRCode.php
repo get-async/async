@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
-use App\Jobs\UpdateUserLastActivityDate;
 use App\Models\User;
 use Illuminate\Support\Str;
 use PragmaRX\Google2FALaravel\Google2FA;
@@ -13,11 +12,11 @@ use InvalidArgumentException;
 /**
  * Validate the code from the QR code for 2FA setup.
  */
-class Validate2faQRCode
+final readonly class Validate2faQRCode
 {
     public function __construct(
-        private readonly User $user,
-        private readonly string $token,
+        private User $user,
+        private string $token,
     ) {}
 
     public function execute(): void
