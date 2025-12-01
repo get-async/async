@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use InvalidArgumentException;
+use Illuminate\Http\RedirectResponse;
 
 final class TwoFAController extends Controller
 {
@@ -26,7 +27,7 @@ final class TwoFAController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'token' => 'required|numeric|digits:6',
