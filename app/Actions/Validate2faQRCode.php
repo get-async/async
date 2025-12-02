@@ -17,6 +17,7 @@ final readonly class Validate2faQRCode
     public function __construct(
         private User $user,
         private string $token,
+        private ?Google2FA $google2fa = null,
     ) {}
 
     public function execute(): void
@@ -27,7 +28,7 @@ final readonly class Validate2faQRCode
 
     private function validateToken(): void
     {
-        $google2fa = new Google2FA(request());
+        $google2fa = $this->google2fa ?? new Google2FA(request());
 
         if (!$google2fa->verifyKey($this->user->two_factor_secret, $this->token)) {
             throw new InvalidArgumentException(__('The provided token is invalid.'));

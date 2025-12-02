@@ -14,8 +14,7 @@ it('validates the 2fa QR code and generates recovery codes', function (): void {
         'two_factor_confirmed_at' => null,
     ]);
 
-    $resendMock = Mockery::mock();
-    $google2faMock = Mockery::mock('overload:' . Google2FA::class);
+    $google2faMock = Mockery::mock(Google2FA::class);
     $google2faMock->shouldReceive('verifyKey')
         ->once()
         ->with($secret, '123456')
@@ -24,6 +23,7 @@ it('validates the 2fa QR code and generates recovery codes', function (): void {
     (new Validate2faQRCode(
         user: $user,
         token: '123456',
+        google2fa: $google2faMock,
     ))->execute();
 
     $user->refresh();
@@ -46,7 +46,7 @@ it('throws exception when token is invalid', function (): void {
         'two_factor_confirmed_at' => null,
     ]);
 
-    $google2faMock = Mockery::mock('overload:' . Google2FA::class);
+    $google2faMock = Mockery::mock(Google2FA::class);
     $google2faMock->shouldReceive('verifyKey')
         ->once()
         ->with($secret, 'wrong-token')
@@ -55,6 +55,7 @@ it('throws exception when token is invalid', function (): void {
     expect(fn() => (new Validate2faQRCode(
         user: $user,
         token: 'wrong-token',
+        google2fa: $google2faMock,
     ))->execute())->toThrow(InvalidArgumentException::class, 'The provided token is invalid.');
 });
 
@@ -67,7 +68,7 @@ it('does not update recovery codes when token is invalid', function (): void {
         'two_factor_recovery_codes' => null,
     ]);
 
-    $google2faMock = Mockery::mock('overload:' . Google2FA::class);
+    $google2faMock = Mockery::mock(Google2FA::class);
     $google2faMock->shouldReceive('verifyKey')
         ->once()
         ->with($secret, 'invalid-token')
@@ -77,6 +78,7 @@ it('does not update recovery codes when token is invalid', function (): void {
         (new Validate2faQRCode(
             user: $user,
             token: 'invalid-token',
+            google2fa: $google2faMock,
         ))->execute();
     } catch (InvalidArgumentException $e) {
         // Expected exception
