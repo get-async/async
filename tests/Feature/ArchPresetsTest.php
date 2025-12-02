@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 arch()->preset()->laravel()
-    ->ignoring('App\Http\Controllers\Auth\VerificationController');
+    ->ignoring('App\Http\Controllers\Auth\VerificationController')
+    ->ignoring('App\Http\Controllers\Auth\LoginController');
 
 arch()->preset()->php();
 
