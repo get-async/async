@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\VerifyTwoFactorCode;
 use App\Enums\EmailType;
+use App\Enums\TwoFactorType;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendEmail;
 use App\Models\User;
@@ -51,6 +53,13 @@ final class LoginController extends Controller
             ]);
         }
 
+        if (Auth::user()->two_factor_preferred_method === TwoFactorType::AUTHENTICATOR->value) {
+            $userId = Auth::user()->id; // Retrieve the user's ID before logging out
+            Auth::logout();
+            session(['2fa:user:id' => $userId]); // Use the stored ID to set the session value
+            return redirect()->route('2fa.challenge');
+        }
+
         RateLimiter::clear($this->throttleKey($request));
 
         $request->session()->regenerate();
@@ -90,5 +99,46 @@ final class LoginController extends Controller
     private function throttleKey(Request $request): string
     {
         return Str::transliterate(Str::lower((string) $request->string('email')) . '|' . $request->ip());
+    }
+
+    /**
+     * Display the 2FA challenge form if required.
+     *
+     * @return View
+     */
+    public function show2faForm(): View
+    {
+        if (!session('2fa:user:id')) {
+            return view('auth.2fa', [
+                'error' => __('Session expired. Please login again.'),
+            ]);
+        }
+
+        return view('auth.2fa');
+    }
+
+    /**
+     * Verify the 2FA code and complete login.
+     *
+     * @return RedirectResponse
+     */
+    public function verify2fa(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'code' => ['required', 'string'],
+        ]);
+
+        $userId = session('2fa:user:id');
+        $user = User::find($userId);
+
+        if (!(new VerifyTwoFactorCode(user: $user, code: $request->input('code')))->execute()) {
+            return back()->withErrors(['code' => 'Invalid code']);
+        }
+
+        Auth::login($user);
+        session()->forget('2fa:user:id');
+        $request->session()->regenerate();
+
+        return redirect()->intended(route('organization.index', absolute: false));
     }
 }
