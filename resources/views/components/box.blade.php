@@ -5,7 +5,7 @@
 ])
 
 <div class="flex flex-col gap-2">
-  @isset ($title)
+  @isset($title)
     <h2 class="font-semi-bold mb-1 text-lg">{{ $title }}</h2>
   @endisset
 

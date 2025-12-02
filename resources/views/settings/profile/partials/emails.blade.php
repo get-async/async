@@ -5,7 +5,7 @@
 ?>
 
 <x-box padding="p-0">
-  <x-slot:title>{{ __('Emails sent') }}</x-slot:title>
+  <x-slot:title>{{ __('Emails sent') }}</x-slot>
 
   @forelse ($viewModel->emailsSent() as $emailSent)
     <div x-data="{ open: false, isLast: {{ $loop->last ? 'true' : 'false' }} }">
