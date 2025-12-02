@@ -15,7 +15,15 @@
     <!-- main content -->
     <section class="p-4 sm:p-8">
       <div class="mx-auto flex max-w-4xl flex-col gap-y-8 sm:px-0">
-        <x-box :title="__('Delete your account')" :description="__(' Your account and all data will be deleted immediately and cannot be restored. This is irreversible. Please be certain.')">
+        <x-box>
+          <x-slot:title>
+            {{ __('Delete your account') }}
+          </x-slot>
+
+          <x-slot:description>
+            {{ __('Your account and all data will be deleted immediately and cannot be restored. This is irreversible. Please be certain.') }}
+          </x-slot>
+
           <form action="{{ route('settings.account.destroy') }}" method="post" x-data="{
             feedback: '',
             isValid: false,

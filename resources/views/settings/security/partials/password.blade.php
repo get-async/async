@@ -4,7 +4,8 @@
  */
 ?>
 
-<x-box :title="__('Change password')" class="mb-6" padding="p-0">
+<x-box class="mb-6" padding="p-0">
+  <x-slot:title>{{ __('Change password') }}</x-slot>
   <x-form method="put" action="{{ route('settings.password.update') }}">
     <!-- current password -->
     <div class="grid grid-cols-3 items-center rounded-t-lg border-b border-gray-200 p-3 hover:bg-blue-50">
