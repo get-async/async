@@ -4,7 +4,9 @@
  */
 ?>
 
-<x-box :title="__('Details')">
+<x-box>
+  <x-slot:title>{{ __('Details') }}</x-slot:title>
+
   <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
     <div class="space-y-2">
       <p class="text-sm text-gray-500">{{ __('These are the details that will be displayed on your profile. Everyone within organizations you belong to will have the opportunity to view them.') }}</p>

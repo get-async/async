@@ -4,7 +4,8 @@
  */
 ?>
 
-<x-box :title="__('Logs')" padding="p-0">
+<x-box padding="p-0">
+  <x-slot:title>{{ __('Logs') }}</x-slot:title>
   <x-slot:description>
     <p>{{ __('All actions performed on your account are logged here.') }}</p>
   </x-slot>
