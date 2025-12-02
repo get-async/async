@@ -1,5 +1,54 @@
 # Changelog
 
+## [0.3.0](https://github.com/get-async/async/compare/get-async/async-v0.2.0...get-async/async-v0.3.0) (2025-12-02)
+
+
+### Features
+
+* ability to create/get job family through api ([#19](https://github.com/get-async/async/issues/19)) ([a983b24](https://github.com/get-async/async/commit/a983b2402e7dabb33de6bc2d9440a52880cf35c3))
+* action to create a job family ([#17](https://github.com/get-async/async/issues/17)) ([af02268](https://github.com/get-async/async/commit/af02268f25145a5bdf122d620e5e14403696dd2c))
+* actions to manage job disciplines ([#26](https://github.com/get-async/async/issues/26)) ([ce138de](https://github.com/get-async/async/commit/ce138de2e0d2a718cf6f5e002b0579ae2c02269d))
+* actions to manage job levels ([#29](https://github.com/get-async/async/issues/29)) ([16b0c27](https://github.com/get-async/async/commit/16b0c271dbfdd89a0448ef7461bf0a96d4d0732a))
+* add 2fa settings page ([#107](https://github.com/get-async/async/issues/107)) ([1b85206](https://github.com/get-async/async/commit/1b85206be3fe23f2e42d904883551dfd4f43cd9b))
+* add account deletion functionality ([#102](https://github.com/get-async/async/issues/102)) ([2d2dc00](https://github.com/get-async/async/commit/2d2dc00e717717302bec68f64fe2737ce62d5db5))
+* add api for job level ([#30](https://github.com/get-async/async/issues/30)) ([b8a060c](https://github.com/get-async/async/commit/b8a060c2b980eeda97c59bb5cb5b493879e65ae6))
+* add better style on links ([#38](https://github.com/get-async/async/issues/38)) ([62cc854](https://github.com/get-async/async/commit/62cc8543bd7ecd54f011a5a35db0f18fcca00f91))
+* add concept of permissions ([#40](https://github.com/get-async/async/issues/40)) ([cd6290a](https://github.com/get-async/async/commit/cd6290a58b359139332a7718c07e58f641f7a5fe))
+* add danger button ([#36](https://github.com/get-async/async/issues/36)) ([573c156](https://github.com/get-async/async/commit/573c1566a40283a25832544bc325da2d70561f0c))
+* add icon support to buttons ([#37](https://github.com/get-async/async/issues/37)) ([8ec2b70](https://github.com/get-async/async/commit/8ec2b700b55870210748069145aba2d729ff620d))
+* add press effect on buttons ([#35](https://github.com/get-async/async/issues/35)) ([945ff18](https://github.com/get-async/async/commit/945ff182bf114ece7eeaee4ee160786927bbe9b6))
+* add seeder for job levels ([#33](https://github.com/get-async/async/issues/33)) ([faadbad](https://github.com/get-async/async/commit/faadbadf13a394b66dc00ac4e2452dbc0e65ca45))
+* api to control job disciplines ([#27](https://github.com/get-async/async/issues/27)) ([e1a5e47](https://github.com/get-async/async/commit/e1a5e47e8dbf8eb628337b30dfc9f34d518e609a))
+* api to destroy a job family ([#23](https://github.com/get-async/async/issues/23)) ([ce84e4a](https://github.com/get-async/async/commit/ce84e4aedf3b1236b5699be86e4be98eb28b7d21))
+* better sidebar ([#39](https://github.com/get-async/async/issues/39)) ([09dffac](https://github.com/get-async/async/commit/09dffacc4cc4b8825a9a58582d61f2a7a4d4291f))
+* challenge 2fa on login ([#109](https://github.com/get-async/async/issues/109)) ([468f67d](https://github.com/get-async/async/commit/468f67d133f81ddc4f0bd3913715f78d851ac70f))
+* default permissions when creating an organization ([#42](https://github.com/get-async/async/issues/42)) ([0ded54d](https://github.com/get-async/async/commit/0ded54d1ae90f23d0c31fbad3ac58f58bac0d91e))
+* fine tune the concept of permission ([#41](https://github.com/get-async/async/issues/41)) ([1f45d35](https://github.com/get-async/async/commit/1f45d35a71bbc01d87ca2029e4b4ec9e318e86da))
+* structure of job discipline ([#24](https://github.com/get-async/async/issues/24)) ([4b51a13](https://github.com/get-async/async/commit/4b51a137db7a3bdd5b7a852de69b5d81742b0bce))
+* update job family in api ([#22](https://github.com/get-async/async/issues/22)) ([ec0abbd](https://github.com/get-async/async/commit/ec0abbdca44ec35e15f4f40a13be37f35c4bbb86))
+
+
+### Miscellaneous Chores
+
+* add seeder for job families ([#25](https://github.com/get-async/async/issues/25)) ([7d7b319](https://github.com/get-async/async/commit/7d7b3191db4f32024fd1d93c4b5b35a4637bb44b))
+* add turbo for links prefetching and body swap ([#70](https://github.com/get-async/async/issues/70)) ([ca17843](https://github.com/get-async/async/commit/ca17843b01b39b15f956520373cc008d3df6913b))
+* **deps:** bump @rollup/rollup-linux-x64-gnu from 4.48.0 to 4.52.5 ([#74](https://github.com/get-async/async/issues/74)) ([0c508ed](https://github.com/get-async/async/commit/0c508ed104c56b148d4129f1df282d429d1f91c6))
+* **deps:** bump @rollup/rollup-linux-x64-gnu from 4.53.1 to 4.53.2 ([#92](https://github.com/get-async/async/issues/92)) ([a8477d7](https://github.com/get-async/async/commit/a8477d7de1b88273cb23b84e956fcaf9e54cc944))
+* **deps:** bump actions/checkout from 5 to 6 ([#103](https://github.com/get-async/async/issues/103)) ([d5618b2](https://github.com/get-async/async/commit/d5618b2fe03efea86d79b0430ffb48cbdf7dc0fb))
+* **deps:** bump actions/setup-node from 4 to 6 ([#73](https://github.com/get-async/async/issues/73)) ([31f13ac](https://github.com/get-async/async/commit/31f13ac3d5952238627d9cc2509a53b064ad5830))
+* **deps:** bump prettier-plugin-tailwindcss from 0.6.14 to 0.7.1 ([#78](https://github.com/get-async/async/issues/78)) ([74a2ae1](https://github.com/get-async/async/commit/74a2ae14da22ab8769de04e1b3e3b9c2787420b1))
+* **deps:** bump resend/resend-laravel from 0.21.0 to 1.0.0 ([#96](https://github.com/get-async/async/issues/96)) ([8c9982c](https://github.com/get-async/async/commit/8c9982c75ddfc936408ccece7d9b1d08c6db8f07))
+* **deps:** update dependencies ([#100](https://github.com/get-async/async/issues/100)) ([1fc8679](https://github.com/get-async/async/commit/1fc86791893fa5aa1f102638f8c62c5e82e44ad2))
+* **deps:** update dependencies ([#101](https://github.com/get-async/async/issues/101)) ([ae8bd0e](https://github.com/get-async/async/commit/ae8bd0ed74ddc782519bbaf0294f764a5e5e3180))
+* **deps:** update dependencies ([#91](https://github.com/get-async/async/issues/91)) ([8cd0fc2](https://github.com/get-async/async/commit/8cd0fc2004146b2286311e2e58317d9f8ed89367))
+* disable turbo globally ([#72](https://github.com/get-async/async/issues/72)) ([76f7e26](https://github.com/get-async/async/commit/76f7e26c2525568a15f197cb1b15d234a684129e))
+* organizations selector ([#66](https://github.com/get-async/async/issues/66)) ([41626ff](https://github.com/get-async/async/commit/41626ffa1648d7001c193b29c000d85238a7dd54))
+* refactor title in box component ([#108](https://github.com/get-async/async/issues/108)) ([ef47388](https://github.com/get-async/async/commit/ef47388e7b6ba4c9f678a1cdc675b125ac6a1e1b))
+* update boost instructions ([#71](https://github.com/get-async/async/issues/71)) ([0c6139c](https://github.com/get-async/async/commit/0c6139c028c483439d33d5c5f0f9a5cba9ab6376))
+* update dependencies ([#67](https://github.com/get-async/async/issues/67)) ([c8543d7](https://github.com/get-async/async/commit/c8543d7d14acf40f432c8737cab339629109c8f0))
+* update icon ([#90](https://github.com/get-async/async/issues/90)) ([cac9243](https://github.com/get-async/async/commit/cac9243fb614e1e160efde8ddc0749719208fbb0))
+* update seeder with job disciplines ([#28](https://github.com/get-async/async/issues/28)) ([cbed3d3](https://github.com/get-async/async/commit/cbed3d393a5c254c706a4d81f4fdae66c6d17d90))
+
 ## [0.2.0](https://github.com/get-async/async/compare/get-async/async-v0.1.0...get-async/async-v0.2.0) (2025-09-06)
 
 
