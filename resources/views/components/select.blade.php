@@ -44,7 +44,11 @@
   </div>
 @else
   <div class="space-y-2">
-    <input id="{{ $id }}" name="{{ $id }}" type="{{ $type }}" {{ $attributes->class($classes) }} value="{{ $value }}" {{ $autocomplete ? 'autocomplete="' . $autocomplete . '"' : '' }} {{ $placeholder ? 'placeholder=' . $placeholder : '' }} @if($passManagerDisabled) data-1p-ignore @endif {{ $autofocus ? 'autofocus' : '' }} {{ $required ? 'required' : '' }} />
+    <select id="{{ $id }}" name="{{ $id }}" {{ $attributes->class($classes) }} {{ $required ? 'required' : '' }}>
+      @foreach ($options as $value => $label)
+        <option value="{{ $value }}" @selected($value === $selected)>{{ $label }}</option>
+      @endforeach
+    </select>
     @if ($help)
       <p class="mt-1 block text-xs text-gray-700 dark:text-gray-300">{{ $help }}</p>
     @endif

@@ -34,6 +34,8 @@ final class UserFactory extends Factory
             'password' => self::$password ??= Hash::make('password'),
             'locale' => 'en',
             'remember_token' => Str::random(10),
+            'two_factor_preferred_method' => 'none',
+            'two_factor_confirmed_at' => null,
         ];
     }
 
