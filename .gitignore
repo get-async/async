@@ -32,3 +32,4 @@ phpstan-baseline.neon
 /.cursor
 CLAUDE.md
 .php-cs-fixer.cache
+.php-cs-fixer.dist.php

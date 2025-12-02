@@ -10,4 +10,5 @@ enum EmailType: string
     case MAGIC_LINK_CREATED = 'magic_link_created';
     case API_CREATED = 'api_created';
     case API_DESTROYED = 'api_destroyed';
+    case ACCOUNT_DESTROYED = 'account_destroyed';
 }

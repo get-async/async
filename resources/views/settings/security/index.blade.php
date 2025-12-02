@@ -1,10 +1,3 @@
-<?php
-/*
- * @var \App\Models\User $user
- * @var \App\Http\ViewModels\ProfileShowViewModel $viewModel
- */
-?>
-
 <x-app-layout>
   <x-slot:title>
     {{ __('Security and access') }}
@@ -25,6 +18,9 @@
       <div class="mx-auto max-w-2xl sm:px-0">
         <!-- user password -->
         @include('settings.security.partials.password', ['user' => $user])
+
+        <!-- two factor authentication -->
+        @include('settings.security.partials.2fa.index')
 
         <!-- api keys -->
         @include('settings.security.partials.api.index', ['apiKeys' => $apiKeys])
